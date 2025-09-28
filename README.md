@@ -72,22 +72,6 @@ This document outlines the coding standards and database naming conventions for 
 
 ---
 
-## 📂 Recommended Folder Structure
-
-```
-/Athlitix
-│
-├── Controllers         # Razor Page / API Controllers
-├── Models              # Domain Models and DTOs
-├── Data                # DbContext and EF Configurations
-├── Services            # Business Logic Layer
-├── Views               # Razor Views
-├── wwwroot             # Static files (CSS, JS, images)
-└── Migrations          # Entity Framework Migrations
-```
-
----
-
 ## 🛠️ Best Practices
 
 * Use **async/await** for all I/O-bound methods.
