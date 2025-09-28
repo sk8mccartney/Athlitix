@@ -1,7 +1,3 @@
-Here’s an improved and more polished version of your markdown file for the school project. It keeps the original structure but enhances clarity, grammar, and formatting for a more professional and presentable result:
-
----
-
 # **Athlitix**
 
 *School project by Skate McCartney*
