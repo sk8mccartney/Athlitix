@@ -107,5 +107,53 @@ To enforce consistency:
 * `StyleCop.Analyzers` — Static analysis for C# standards.
 * `Prettier` / `ESLint` — If JS-heavy UI is added.
 
+---
+
+# Athlitix Project Folder Structure
+
+/Athlitix
+│
+├── Controllers/ # MVC Controllers handling HTTP requests
+│ ├── EventController.cs
+│ └── ParticipantController.cs
+│
+├── Models/ # Domain models / EF Core entities (database tables)
+│ ├── Event.cs
+│ └── Participant.cs
+│
+├── DTOs/ # Data Transfer Objects (or InputModels/ViewModels)
+│ ├── Event/
+│ │ ├── EventCreateDto.cs
+│ │ ├── EventReadDto.cs
+│ │ └── EventUpdateDto.cs
+│ └── Participant/
+│ ├── ParticipantCreateDto.cs
+│ └── ParticipantReadDto.cs
+│
+├── Services/ # Business logic layer, including manual mapping code
+│ ├── Interfaces/
+│ │ └── IEventService.cs
+│ └── EventService.cs
+│
+├── Data/ # Data access layer (EF Core DbContext and configs)
+│ ├── AthlitixDbContext.cs
+│ └── Configurations/
+│ └── EventConfiguration.cs
+│
+├── Views/ # Razor Views (MVC UI)
+│ ├── Event/
+│ │ ├── Index.cshtml
+│ │ ├── Create.cshtml
+│ │ └── Details.cshtml
+│ └── Shared/
+│
+├── wwwroot/ # Static assets (css, js, images)
+│
+├── appsettings.json # Configuration
+├── Program.cs # Application entry point
+└── Startup.cs (if applicable) # Application setup and middleware configuration
+
+
+
 
 
