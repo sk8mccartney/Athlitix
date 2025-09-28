@@ -112,6 +112,7 @@ To enforce consistency:
 # Athlitix Project Folder Structure
 
 /Athlitix
+```
 │
 ├── Controllers/ # MVC Controllers handling HTTP requests
 │ ├── EventController.cs
@@ -152,6 +153,7 @@ To enforce consistency:
 ├── appsettings.json # Configuration
 ├── Program.cs # Application entry point
 └── Startup.cs (if applicable) # Application setup and middleware configuration
+```
 
 
 
