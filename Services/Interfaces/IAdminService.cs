@@ -1,4 +1,4 @@
-﻿using Athlitix.Services.Models;
+﻿using Athlitix.Models;
 
 namespace Athlitix.Services.Interfaces;
 

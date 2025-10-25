@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Athlitix.Data.Model;
+namespace Athlitix.Models;
 
-public class Admin : BaseEntity
+public class AdminEntity : BaseEntity
 {
     [MaxLength(50)]
     public string FirstName { get; set; } = default!;
@@ -15,5 +15,11 @@ public class Admin : BaseEntity
     [MaxLength(50)]
     public string PasswordHash { get; set; } = default!;
     [MaxLength(50)]
-    public string Role { get; set; } = default!;
+    public string Role { get; set; } = AdminRole.Readonly.ToString();
+    public bool IsActive { get; set; }
+
+    // Foreign key
+    public Guid OrganizationId { get; set; }
+    public OrganizationEntity Organization { get; set; } = null!;
 }
+

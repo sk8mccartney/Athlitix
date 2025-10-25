@@ -1,8 +1,7 @@
 ﻿using Athlitix.Data;
-using Athlitix.Services.Extensions;
+using Athlitix.Models;
 using Athlitix.Services.Interfaces;
-using Athlitix.Services.Models;
-using Microsoft.EntityFrameworkCore;
+using Athlitix.Utility.Extensions;
 
 namespace Athlitix.Services;
 
