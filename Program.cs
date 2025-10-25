@@ -10,12 +10,10 @@ var dbContextOptionsBuilder = new DbContextOptionsBuilder<AthlitixContext>();
 dbContextOptionsBuilder.UseSqlServer("Server=localhost;Database=admin_demo_db;Trusted_Connection=True;");
 
 // Bind the "Security" section of appsettings.json
-builder.Services.Configure<SecuritySettings>(
-    builder.Configuration.GetSection("Security"));
+builder.Services.Configure<SecuritySettings>(builder.Configuration.GetSection("Security"));
 
 // Optionally, if you are using Dependency Injection:
-builder.Services.AddDbContext<AthlitixContext>(options =>
-    options.UseSqlServer("Server=localhost;Database=athlitix_db;User Id=sa;Password=sk8mccartney!;Trusted_Connection=True;TrustServerCertificate=True;"));
+builder.Services.AddDbContext<AthlitixContext>(options => options.UseSqlServer("Server=localhost;Database=athlitix_db;User Id=sa;Password=sk8mccartney!;Trusted_Connection=True;TrustServerCertificate=True;"));
 
 builder.Services.AddScoped<IAdminService, AdminService>();
 
@@ -30,7 +28,6 @@ using (var scope = app.Services.CreateScope())
     var context = scope.ServiceProvider.GetRequiredService<AthlitixContext>();
     context.Database.EnsureCreated();
 }
-
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

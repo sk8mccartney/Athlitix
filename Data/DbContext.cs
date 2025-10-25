@@ -41,7 +41,8 @@ public class AthlitixContext : DbContext
         modelBuilder.Entity<OrganizationEntity>(entity =>
         {
             entity.ToTable("Organization").HasData(
-                new OrganizationEntity() { 
+                new OrganizationEntity()
+                {
                     Id = _organizationId,
                     Name = "Elite Muay Thai",
                     Description = "Kicking arse since 2018",
@@ -51,4 +52,3 @@ public class AthlitixContext : DbContext
         });
     }
 }
-
