@@ -1,13 +1,17 @@
+using Athlitix.Configuration;
 using Athlitix.Data;
 using Athlitix.Services;
 using Athlitix.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var dbContextOptionsBuilder = new DbContextOptionsBuilder<AthlitixContext>();
 dbContextOptionsBuilder.UseSqlServer("Server=localhost;Database=admin_demo_db;Trusted_Connection=True;");
+
+// Bind the "Security" section of appsettings.json
+builder.Services.Configure<SecuritySettings>(
+    builder.Configuration.GetSection("Security"));
 
 // Optionally, if you are using Dependency Injection:
 builder.Services.AddDbContext<AthlitixContext>(options =>

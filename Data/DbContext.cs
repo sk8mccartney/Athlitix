@@ -1,5 +1,7 @@
-﻿using Athlitix.Models;
+﻿using Athlitix.Configuration;
+using Athlitix.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace Athlitix.Data;
 
@@ -10,9 +12,12 @@ public class AthlitixContext : DbContext
 
     private readonly Guid _organizationId = Guid.Parse("5835ca66-1356-42a5-a36a-cf1a019189f1");
     private readonly Guid _adminId = Guid.Parse("df283585-df16-42d2-aa51-b10eb2861b7e");
+    private readonly string _salt;
 
-    public AthlitixContext(DbContextOptions<AthlitixContext> options)
-        : base(options) { }
+    public AthlitixContext(DbContextOptions<AthlitixContext> options, IOptions<SecuritySettings> securityOptions) : base(options)
+    {
+        _salt = securityOptions.Value.PasswordSalt ?? throw new InvalidOperationException("Missing salt in configuration.");
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -26,7 +31,7 @@ public class AthlitixContext : DbContext
                     LastName = "McCartney",
                     PhoneNumber = "01132678544",
                     Email = "skate.mccartney@hotmail.com",
-                    PasswordHash = "letmein",
+                    PasswordHash = Utility.PasswordHasher.HashPassword("letmein", _salt),
                     Role = AdminRole.Admin.ToString(),
                     OrganizationId = _organizationId,
                     IsActive = true,
