@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Athlitix.Models;
+using System.ComponentModel.DataAnnotations;
 
-namespace Athlitix.Models;
+namespace Athlitix.Entities;
 
 public class AdminEntity : BaseEntity
 {

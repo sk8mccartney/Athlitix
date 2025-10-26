@@ -16,6 +16,7 @@ builder.Services.Configure<SecuritySettings>(builder.Configuration.GetSection("S
 builder.Services.AddDbContext<AthlitixContext>(options => options.UseSqlServer("Server=localhost;Database=athlitix_db;User Id=sa;Password=sk8mccartney!;Trusted_Connection=True;TrustServerCertificate=True;"));
 
 builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IOrganizationService, OrganizationService>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();

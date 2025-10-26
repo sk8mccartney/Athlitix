@@ -3,16 +3,18 @@ using Athlitix.Entities;
 
 namespace Athlitix.Utility.Extensions;
 
-public static class OrganizationExtension
+public static class CompetitionExtension
 {
-    public static OrganizationModel ToModel(this OrganizationEntity entity)
+    public static CompetitionModel ToModel(this CompetitionEntity entity)
     {
         if (entity == null) return null!;
 
-        var model = new OrganizationModel
+        var model = new CompetitionModel
         {
             Name = entity.Name,
             Description = entity.Description,
+            StartDate = entity.StartDate,
+            FinishDate = entity.FinishDate,
             IsActive = entity.IsActive
         };
 
@@ -21,14 +23,16 @@ public static class OrganizationExtension
         return model;
     }
 
-    public static OrganizationEntity ToEntity(this OrganizationModel model)
+    public static CompetitionEntity ToEntity(this CompetitionModel model)
     {
         if (model == null) return null!;
 
-        var entity = new OrganizationEntity
+        var entity = new CompetitionEntity
         {
             Name = model.Name,
             Description = model.Description,
+            StartDate = model.StartDate,
+            FinishDate = model.FinishDate,
             IsActive = model.IsActive
         };
 

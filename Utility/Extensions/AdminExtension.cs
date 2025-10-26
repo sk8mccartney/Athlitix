@@ -1,4 +1,5 @@
 ﻿using Athlitix.Models;
+using Athlitix.Entities;
 
 namespace Athlitix.Utility.Extensions;
 

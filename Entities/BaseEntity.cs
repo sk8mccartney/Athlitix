@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Athlitix.Models;
+namespace Athlitix.Entities;
 
 public class BaseEntity
 {

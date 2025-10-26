@@ -1,4 +1,5 @@
 ﻿using Athlitix.Configuration;
+using Athlitix.Entities;
 using Athlitix.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -9,6 +10,7 @@ public class AthlitixContext : DbContext
 {
     public DbSet<OrganizationEntity> Organizations { get; set; }
     public DbSet<AdminEntity> Admins { get; set; }
+    public DbSet<CompetitionEntity> Competitions { get; set; }
 
     private readonly Guid _organizationId = Guid.Parse("5835ca66-1356-42a5-a36a-cf1a019189f1");
     private readonly Guid _adminId = Guid.Parse("df283585-df16-42d2-aa51-b10eb2861b7e");
@@ -49,6 +51,10 @@ public class AthlitixContext : DbContext
                     IsActive = true,
                     CreatedAt = DateTime.Parse("2025/01/01")
                 });
+        });
+        modelBuilder.Entity<CompetitionEntity>(entity =>
+        {
+            entity.ToTable("Competition");
         });
     }
 }

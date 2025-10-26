@@ -33,8 +33,10 @@ public class AdminService : IAdminService
 
     public AdminModel GetSingle(Guid id)
     {
+        _logger.LogInformation("Retrieving admin {adminId}", id);
         var admin = _dbContext.Admins.Single(x => x.Id == id);
 
+        _logger.LogInformation("Retrived admin {name}", $"{admin.FirstName} {admin.LastName}");
         return admin.ToModel();
     }
 }
