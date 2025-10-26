@@ -18,10 +18,10 @@ public class OrganizationService : IOrganizationService
 
     public OrganizationModel GetSingle(Guid id)
     {
-        _logger.LogInformation("Retrieving organization {organizationId}", id);
+        _logger.LogInformation("Retrieving organization {organizationId}.", id);
         var organization = _dbContext.Organizations.Single(x => x.Id == id);
 
-        _logger.LogInformation("Retrived organization {name}", organization.Name);
+        _logger.LogInformation("Retrived organization {name}.", organization.Name);
         return organization.ToModel();
     }
 }
