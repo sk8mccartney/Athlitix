@@ -6,14 +6,14 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var dbContextOptionsBuilder = new DbContextOptionsBuilder<AthlitixContext>();
-dbContextOptionsBuilder.UseSqlServer("Server=localhost;Database=admin_demo_db;Trusted_Connection=True;");
+//var dbContextOptionsBuilder = new DbContextOptionsBuilder<AthlitixContext>();
+//dbContextOptionsBuilder.UseSqlServer("Server=localhost;Database=admin_demo_db;Trusted_Connection=True;");
 
 // Bind the "Security" section of appsettings.json
 builder.Services.Configure<SecuritySettings>(builder.Configuration.GetSection("Security"));
 
 // Optionally, if you are using Dependency Injection:
-builder.Services.AddDbContext<AthlitixContext>(options => options.UseSqlServer("Server=localhost;Database=athlitix_db;User Id=sa;Password=sk8mccartney!;Trusted_Connection=True;TrustServerCertificate=True;"));
+builder.Services.AddDbContext<AthlitixContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<IOrganizationService, OrganizationService>();
