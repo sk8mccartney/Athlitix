@@ -20,6 +20,7 @@ builder.Services.AddScoped<IMapper<CompetitionEntity, CompetitionModel>, Competi
 builder.Services.AddScoped<IMapper<EventTypeEntity, EventTypeModel>, EventTypeMapper>();
 builder.Services.AddScoped<IMapper<OrganizationEntity, OrganizationModel>, OrganizationMapper>();
 builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IEventTypeService, EventTypeService>();
 builder.Services.AddScoped<IOrganizationService, OrganizationService>();
 
 // Add services to the container.
