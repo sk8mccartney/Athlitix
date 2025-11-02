@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Athlitix.Models;
+﻿namespace Athlitix.Models;
 
 public class CompetitionModel : BaseModel
 {
@@ -11,6 +9,4 @@ public class CompetitionModel : BaseModel
     public DateTimeOffset StartDate { get; set; }
 
     public DateTimeOffset FinishDate { get; set; }
-
-    public bool IsActive { get; set; }
 }

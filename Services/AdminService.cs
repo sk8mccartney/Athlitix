@@ -1,8 +1,9 @@
 ﻿using Athlitix.Configuration;
 using Athlitix.Data;
+using Athlitix.Entities;
 using Athlitix.Models;
 using Athlitix.Services.Interfaces;
-using Athlitix.Utility.Extensions;
+using Athlitix.Utilities.Mappers;
 using Microsoft.Extensions.Options;
 
 namespace Athlitix.Services;
@@ -12,12 +13,14 @@ public class AdminService : IAdminService
     private readonly AthlitixContext _dbContext;
     private readonly ILogger<AdminService> _logger;
     private readonly string _salt;
+    private readonly IMapper<AdminEntity, AdminModel> _mapper;
 
-    public AdminService(AthlitixContext dbContext, ILogger<AdminService> logger, IOptions<SecuritySettings> securityOptions)
+    public AdminService(AthlitixContext dbContext, ILogger<AdminService> logger, IOptions<SecuritySettings> securityOptions, IMapper<AdminEntity, AdminModel> mapper)
     {
         _dbContext = dbContext;
         _logger = logger;
         _salt = securityOptions.Value.PasswordSalt ?? throw new InvalidOperationException("Missing salt in configuration.");
+        _mapper = mapper;
     }
 
     public AdminModel Add(AdminModel adminModel)
@@ -29,10 +32,10 @@ public class AdminService : IAdminService
 
         _logger.LogInformation("Create admin {admin}.", $"{adminModel.FirstName} {adminModel.LastName}");
 
-        var admin = _dbContext.Admins.Add(adminModel.ToEntity());
+        var admin = _dbContext.Admins.Add(_mapper.ToEntity(adminModel));
         _dbContext.SaveChanges();
 
-        return admin.Entity.ToModel();
+        return _mapper.ToModel(admin.Entity);
     }
 
     public AdminModel GetSingle(Guid id)
@@ -41,7 +44,7 @@ public class AdminService : IAdminService
         var admin = _dbContext.Admins.Single(x => x.Id == id);
 
         _logger.LogInformation("Retrived admin {name}.", $"{admin.FirstName} {admin.LastName}");
-        return admin.ToModel();
+        return _mapper.ToModel(admin);
     }
 
     public AdminModel? Login(string email, string password)
@@ -62,7 +65,7 @@ public class AdminService : IAdminService
             var admin = _dbContext.Admins.Single(x => x.Email.Equals(email) && x.PasswordHash.Equals(Utility.PasswordHasher.HashPassword(password, _salt)));
 
             _logger.LogInformation("Login successful for {email}.", admin.Email);
-            return admin.ToModel();
+            return _mapper.ToModel(admin);
         }
         catch (InvalidOperationException)
         {

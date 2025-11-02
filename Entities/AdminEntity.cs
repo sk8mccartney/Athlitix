@@ -23,8 +23,6 @@ public class AdminEntity : BaseEntity
     [MaxLength(50)]
     public string Role { get; set; } = AdminRole.Readonly.ToString();
 
-    public bool IsActive { get; set; }
-
     // Foreign key
     public Guid OrganizationId { get; set; }
 

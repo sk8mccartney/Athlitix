@@ -2,16 +2,12 @@
 
 namespace Athlitix.Entities;
 
-public class CompetitionEntity : BaseEntity
+public class EventTypeEntity : BaseEntity
 {
     [MaxLength(50)]
     public string Name { get; set; } = default!;
 
     public string Description { get; set; } = default!;
-
-    public DateTimeOffset StartDate { get; set; }
-
-    public DateTimeOffset FinishDate { get; set; }
 
     // Foreign key
     public Guid OrganizationId { get; set; }

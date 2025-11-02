@@ -8,12 +8,18 @@ namespace Athlitix.Data;
 
 public class AthlitixContext : DbContext
 {
-    public DbSet<OrganizationEntity> Organizations { get; set; }
     public DbSet<AdminEntity> Admins { get; set; }
     public DbSet<CompetitionEntity> Competitions { get; set; }
+    public DbSet<EventTypeEntity> EventTypes { get; set; }
+    public DbSet<OrganizationEntity> Organizations { get; set; }
 
     private readonly Guid _organizationId = Guid.Parse("5835ca66-1356-42a5-a36a-cf1a019189f1");
     private readonly Guid _adminId = Guid.Parse("df283585-df16-42d2-aa51-b10eb2861b7e");
+    private readonly Guid _competitionId = Guid.Parse("561e6139-413c-4de6-bbdc-6c58bb3b61aa");
+    private readonly Guid _eventTypeId1 = Guid.Parse("cac94e39-969d-41ef-9a25-f33675e1fe92");
+    private readonly Guid _eventTypeId2 = Guid.Parse("dbc5f1de-fcba-4d0a-8a71-eeb1f209eeff");
+    private readonly Guid _eventTypeId3 = Guid.Parse("d9fdad56-2c37-4be7-89ab-1af3cf1142c7");
+    private readonly DateTime _defaultCreatedDate = DateTime.Parse("2025/01/01");
     private readonly string _salt;
 
     public AthlitixContext(DbContextOptions<AthlitixContext> options, IOptions<SecuritySettings> securityOptions) : base(options)
@@ -37,7 +43,7 @@ public class AthlitixContext : DbContext
                     Role = AdminRole.Admin.ToString(),
                     OrganizationId = _organizationId,
                     IsActive = true,
-                    CreatedAt = DateTime.Parse("2025/01/01")
+                    CreatedAt = _defaultCreatedDate
                 });
         });
         modelBuilder.Entity<OrganizationEntity>(entity =>
@@ -49,12 +55,54 @@ public class AthlitixContext : DbContext
                     Name = "Elite Muay Thai",
                     Description = "Kicking arse since 2018",
                     IsActive = true,
-                    CreatedAt = DateTime.Parse("2025/01/01")
+                    CreatedAt = _defaultCreatedDate
                 });
         });
         modelBuilder.Entity<CompetitionEntity>(entity =>
         {
-            entity.ToTable("Competition");
+            entity.ToTable("Competition").HasData(
+                new CompetitionEntity()
+                {
+                    Id = _competitionId,
+                    Name = "Legends Final",
+                    Description = "Season finaly for all the greatest fighters",
+                    StartDate = DateTime.Parse("2026/07/01"),
+                    FinishDate = DateTime.Parse("2026/07/02"),
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                });
+        });
+        modelBuilder.Entity<EventTypeEntity>(entity =>
+        {
+            entity.ToTable("EventType").HasData(
+                new EventTypeEntity()
+                {
+                    Id = _eventTypeId1,
+                    Name = "Skills Bout",
+                    Description = "Under 13's non competitive skills fight",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new EventTypeEntity()
+                {
+                    Id = _eventTypeId2,
+                    Name = "Junior Bout",
+                    Description = "Junior competitive skills fight",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new EventTypeEntity()
+                {
+                    Id = _eventTypeId3,
+                    Name = "Senior Bout",
+                    Description = "Senior competitive skills fight",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                });
         });
     }
 }

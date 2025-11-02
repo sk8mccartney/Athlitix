@@ -1,13 +1,13 @@
 using Athlitix.Configuration;
 using Athlitix.Data;
+using Athlitix.Entities;
+using Athlitix.Models;
 using Athlitix.Services;
 using Athlitix.Services.Interfaces;
+using Athlitix.Utilities.Mappers;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
-//var dbContextOptionsBuilder = new DbContextOptionsBuilder<AthlitixContext>();
-//dbContextOptionsBuilder.UseSqlServer("Server=localhost;Database=admin_demo_db;Trusted_Connection=True;");
 
 // Bind the "Security" section of appsettings.json
 builder.Services.Configure<SecuritySettings>(builder.Configuration.GetSection("Security"));
@@ -15,6 +15,10 @@ builder.Services.Configure<SecuritySettings>(builder.Configuration.GetSection("S
 // Optionally, if you are using Dependency Injection:
 builder.Services.AddDbContext<AthlitixContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddScoped<IMapper<AdminEntity, AdminModel>, AdminMapper>();
+builder.Services.AddScoped<IMapper<CompetitionEntity, CompetitionModel>, CompetitionMapper>();
+builder.Services.AddScoped<IMapper<EventTypeEntity, EventTypeModel>, EventTypeMapper>();
+builder.Services.AddScoped<IMapper<OrganizationEntity, OrganizationModel>, OrganizationMapper>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<IOrganizationService, OrganizationService>();
 

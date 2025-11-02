@@ -1,7 +1,8 @@
 ﻿using Athlitix.Data;
+using Athlitix.Entities;
 using Athlitix.Models;
 using Athlitix.Services.Interfaces;
-using Athlitix.Utility.Extensions;
+using Athlitix.Utilities.Mappers;
 
 namespace Athlitix.Services;
 
@@ -9,11 +10,13 @@ public class OrganizationService : IOrganizationService
 {
     private readonly AthlitixContext _dbContext;
     private readonly ILogger<OrganizationService> _logger;
+    private readonly IMapper<OrganizationEntity, OrganizationModel> _mapper;
 
-    public OrganizationService(AthlitixContext dbContext, ILogger<OrganizationService> logger)
+    public OrganizationService(AthlitixContext dbContext, ILogger<OrganizationService> logger, IMapper<OrganizationEntity, OrganizationModel> mapper)
     {
         _dbContext = dbContext;
         _logger = logger;
+        _mapper = mapper;
     }
 
     public OrganizationModel GetSingle(Guid id)
@@ -22,6 +25,6 @@ public class OrganizationService : IOrganizationService
         var organization = _dbContext.Organizations.Single(x => x.Id == id);
 
         _logger.LogInformation("Retrived organization {name}.", organization.Name);
-        return organization.ToModel();
+        return _mapper.ToModel(organization);
     }
 }
