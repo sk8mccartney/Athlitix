@@ -8,10 +8,11 @@ namespace Athlitix.Data;
 
 public class AthlitixContext : DbContext
 {
+    public DbSet<OrganizationEntity> Organizations { get; set; }
     public DbSet<AdminEntity> Admins { get; set; }
     public DbSet<CompetitionEntity> Competitions { get; set; }
     public DbSet<EventTypeEntity> EventTypes { get; set; }
-    public DbSet<OrganizationEntity> Organizations { get; set; }
+    public DbSet<EventEntity> Events { get; set; }
 
     private readonly Guid _organizationId = Guid.Parse("5835ca66-1356-42a5-a36a-cf1a019189f1");
     private readonly Guid _adminId = Guid.Parse("df283585-df16-42d2-aa51-b10eb2861b7e");
@@ -19,6 +20,7 @@ public class AthlitixContext : DbContext
     private readonly Guid _eventTypeId1 = Guid.Parse("cac94e39-969d-41ef-9a25-f33675e1fe92");
     private readonly Guid _eventTypeId2 = Guid.Parse("dbc5f1de-fcba-4d0a-8a71-eeb1f209eeff");
     private readonly Guid _eventTypeId3 = Guid.Parse("d9fdad56-2c37-4be7-89ab-1af3cf1142c7");
+    private readonly Guid _eventId = Guid.Parse("3f2dbfda-3842-4bd9-a063-00d5fde0c9a0");
     private readonly DateTime _defaultCreatedDate = DateTime.Parse("2025/01/01");
     private readonly string _salt;
 
@@ -100,6 +102,22 @@ public class AthlitixContext : DbContext
                     Name = "Senior Bout",
                     Description = "Senior competitive skills fight",
                     OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                });
+        });
+        modelBuilder.Entity<EventEntity>(entity =>
+        {
+            entity.ToTable("Event").HasData(
+                new EventEntity()
+                {
+                    Id = _eventId,
+                    Name = "70kg - Skate McCartney vs Abdul Mohadeen",
+                    Description = string.Empty,
+                    CompetitionId = _competitionId,
+                    EventTypeId = _eventTypeId2,
+                    StartDate = DateTime.Parse("2026/07/01 19:30:00"),
+                    FinishDate = DateTime.Parse("2026/07/01 19:45:00"),
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
                 });

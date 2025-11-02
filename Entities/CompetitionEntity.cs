@@ -17,4 +17,6 @@ public class CompetitionEntity : BaseEntity
     public Guid OrganizationId { get; set; }
 
     public OrganizationEntity Organization { get; set; } = null!;
+
+    public ICollection<EventEntity> Events { get; set; } = new List<EventEntity>();
 }
