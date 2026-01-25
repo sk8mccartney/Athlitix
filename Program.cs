@@ -19,6 +19,8 @@ builder.Services.AddScoped<IMapper<AdminEntity, AdminModel>, AdminMapper>();
 builder.Services.AddScoped<IMapper<CompetitionEntity, CompetitionModel>, CompetitionMapper>();
 builder.Services.AddScoped<IMapper<EventTypeEntity, EventTypeModel>, EventTypeMapper>();
 builder.Services.AddScoped<IMapper<OrganizationEntity, OrganizationModel>, OrganizationMapper>();
+builder.Services.AddScoped<IMapper<ParticipantEntity, ParticipantModel>, ParticipantMapper>();
+builder.Services.AddScoped<IMapper<TeamEntity, TeamModel>, TeamMapper>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<IEventTypeService, EventTypeService>();
 builder.Services.AddScoped<IOrganizationService, OrganizationService>();
