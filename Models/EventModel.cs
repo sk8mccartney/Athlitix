@@ -1,6 +1,6 @@
 ﻿namespace Athlitix.Models;
 
-public class EventModel
+public class EventModel : BaseModel
 {
     public string Name { get; set; } = default!;
 
@@ -9,4 +9,6 @@ public class EventModel
     public DateTimeOffset StartDate { get; set; }
 
     public DateTimeOffset FinishDate { get; set; }
+
+    public CompetitionModel Competition { get; set; } = default!;
 }

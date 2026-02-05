@@ -18,7 +18,9 @@ public class AthlitixContext : DbContext
 
     private readonly Guid _organizationId = Guid.Parse("5835ca66-1356-42a5-a36a-cf1a019189f1");
     private readonly Guid _adminId = Guid.Parse("df283585-df16-42d2-aa51-b10eb2861b7e");
-    private readonly Guid _competitionId = Guid.Parse("561e6139-413c-4de6-bbdc-6c58bb3b61aa");
+    private readonly Guid _competitionId1 = Guid.Parse("561e6139-413c-4de6-bbdc-6c58bb3b61aa");
+    private readonly Guid _competitionId2 = Guid.Parse("8f3a2c1b-4d7e-4a9f-8b2d-1c0e9f7a6b5d");
+    private readonly Guid _competitionId3 = Guid.Parse("d4e7a1b2-3c8f-4d5a-9e7b-2f1c0a8d9e6b");
     private readonly Guid _eventTypeId1 = Guid.Parse("cac94e39-969d-41ef-9a25-f33675e1fe92");
     private readonly Guid _eventTypeId2 = Guid.Parse("dbc5f1de-fcba-4d0a-8a71-eeb1f209eeff");
     private readonly Guid _eventTypeId3 = Guid.Parse("d9fdad56-2c37-4be7-89ab-1af3cf1142c7");
@@ -73,11 +75,33 @@ public class AthlitixContext : DbContext
             entity.ToTable("Competition").HasData(
                 new CompetitionEntity()
                 {
-                    Id = _competitionId,
+                    Id = _competitionId1,
                     Name = "Legends Final",
                     Description = "Season finaly for all the greatest fighters",
                     StartDate = DateTime.Parse("2026/07/01"),
                     FinishDate = DateTime.Parse("2026/07/02"),
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new CompetitionEntity()
+                {
+                    Id = _competitionId2,
+                    Name = "Summer Showdown",
+                    Description = "A thrilling summer event bringing together top amateurs for fast-paced bouts.",
+                    StartDate = DateTime.Parse("2026/07/30"),
+                    FinishDate = DateTime.Parse("2026/07/31"),
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new CompetitionEntity()
+                {
+                    Id = _competitionId3,
+                    Name = "August Clash",
+                    Description = "Kicking off August with fierce matchups across all weight categories.",
+                    StartDate = DateTime.Parse("2026/08/01"),
+                    FinishDate = DateTime.Parse("2026/08/02"),
                     OrganizationId = _organizationId,
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -117,15 +141,106 @@ public class AthlitixContext : DbContext
         modelBuilder.Entity<EventEntity>(entity =>
         {
             entity.ToTable("Event").HasData(
-                new EventEntity()
+                new EventEntity
                 {
-                    Id = _eventId,
-                    Name = "70kg - Skate McCartney vs Abdul Mohadeen",
-                    Description = string.Empty,
-                    CompetitionId = _competitionId,
+                    Id = Guid.Parse("101a7f3c-9c2b-4f1a-9e3d-6c5a4b3d2e01"),
+                    Name = "Men's Under 60kg Open",
+                    Description = "Men's amateur lightweight division (Under 60kg).",
+                    StartDate = new DateTimeOffset(2026, 7, 7, 20, 0, 0, TimeSpan.Zero),
+                    FinishDate = new DateTimeOffset(2026, 7, 7, 20, 15, 0, TimeSpan.Zero),
                     EventTypeId = _eventTypeId2,
-                    StartDate = DateTime.Parse("2026/07/01 19:30:00"),
-                    FinishDate = DateTime.Parse("2026/07/01 19:45:00"),
+                    CompetitionId = _competitionId1,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new EventEntity
+                {
+                    Id = Guid.Parse("202b8e4d-1a3c-4b2d-8f9e-7d6c5b4a3e02"),
+                    Name = "Men's Under 71kg Open",
+                    Description = "Men's amateur light-middleweight division (Under 71kg).",
+                    StartDate = new DateTimeOffset(2026, 7, 7, 20, 15, 0, TimeSpan.Zero),
+                    FinishDate = new DateTimeOffset(2026, 7, 7, 20, 30, 0, TimeSpan.Zero),
+                    EventTypeId = _eventTypeId3,
+                    CompetitionId = _competitionId1,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new EventEntity
+                {
+                    Id = Guid.Parse("303c9d5e-2b4d-4c3e-9a8f-8e7d6c5b4a03"),
+                    Name = "Men's Under 54kg Open",
+                    Description = "Men's amateur bantamweight division (Under 54kg).",
+                    StartDate = new DateTimeOffset(2026, 7, 7, 20, 30, 0, TimeSpan.Zero),
+                    FinishDate = new DateTimeOffset(2026, 7, 7, 20, 45, 0, TimeSpan.Zero),
+                    EventTypeId = _eventTypeId2,
+                    CompetitionId = _competitionId1,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new EventEntity
+                {
+                    Id = Guid.Parse("404d0c6f-3c5e-4d4f-8b7a-9f8e7d6c5b04"),
+                    Name = "Men's Under 80kg Open",
+                    Description = "Men's amateur light-heavyweight division (Under 80kg).",
+                    StartDate = new DateTimeOffset(2026, 7, 7, 20, 45, 0, TimeSpan.Zero),
+                    FinishDate = new DateTimeOffset(2026, 7, 7, 21, 0, 0, TimeSpan.Zero),
+                    EventTypeId = _eventTypeId3,
+                    CompetitionId = _competitionId1,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new EventEntity
+                {
+                    Id = Guid.Parse("505e1b7a-4d6f-4e5a-9c8b-0a9f8e7d6c05"),
+                    Name = "Men's Under 63.5kg Open",
+                    Description = "Men's amateur light-welterweight division (Under 63.5kg).",
+                    StartDate = new DateTimeOffset(2026, 7, 7, 21, 0, 0, TimeSpan.Zero),
+                    FinishDate = new DateTimeOffset(2026, 7, 7, 21, 15, 0, TimeSpan.Zero),
+                    EventTypeId = _eventTypeId2,
+                    CompetitionId = _competitionId1,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new EventEntity
+                {
+                    Id = Guid.Parse("606f2a8b-5e7a-4f6b-8d9c-1b0a9f8e7d06"),
+                    Name = "Men's Under 92kg Open",
+                    Description = "Men's amateur heavyweight division (Under 92kg).",
+                    StartDate = new DateTimeOffset(2026, 7, 7, 21, 15, 0, TimeSpan.Zero),
+                    FinishDate = new DateTimeOffset(2026, 7, 7, 21, 30, 0, TimeSpan.Zero),
+                    EventTypeId = _eventTypeId3,
+                    CompetitionId = _competitionId1,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new EventEntity
+                {
+                    Id = Guid.Parse("707a3b9c-6f8b-4a7c-9e0d-2c1b0a9f8e07"),
+                    Name = "Men's Under 57kg Open",
+                    Description = "Men's amateur featherweight division (Under 57kg).",
+                    StartDate = new DateTimeOffset(2026, 7, 7, 21, 30, 0, TimeSpan.Zero),
+                    FinishDate = new DateTimeOffset(2026, 7, 7, 21, 45, 0, TimeSpan.Zero),
+                    EventTypeId = _eventTypeId2,
+                    CompetitionId = _competitionId1,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new EventEntity
+                {
+                    Id = Guid.Parse("808b4cad-7a9c-4b8d-8f1e-3d2c1b0a9f08"),
+                    Name = "Men's Over 92kg Open",
+                    Description = "Men's amateur super-heavyweight division (Over 92kg).",
+                    StartDate = new DateTimeOffset(2026, 7, 7, 21, 45, 0, TimeSpan.Zero),
+                    FinishDate = new DateTimeOffset(2026, 7, 7, 22, 0, 0, TimeSpan.Zero),
+                    EventTypeId = _eventTypeId3,
+                    CompetitionId = _competitionId1,
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
                 });

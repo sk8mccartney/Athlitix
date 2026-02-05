@@ -21,9 +21,12 @@ builder.Services.AddScoped<IMapper<EventTypeEntity, EventTypeModel>, EventTypeMa
 builder.Services.AddScoped<IMapper<OrganizationEntity, OrganizationModel>, OrganizationMapper>();
 builder.Services.AddScoped<IMapper<ParticipantEntity, ParticipantModel>, ParticipantMapper>();
 builder.Services.AddScoped<IMapper<TeamEntity, TeamModel>, TeamMapper>();
+builder.Services.AddScoped<IMapper<EventEntity, EventModel>, EventMapper>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<IEventTypeService, EventTypeService>();
 builder.Services.AddScoped<IOrganizationService, OrganizationService>();
+builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddScoped<ITeamService, TeamService>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
