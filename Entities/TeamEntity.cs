@@ -13,4 +13,6 @@ public class TeamEntity : BaseEntity
     public Guid OrganizationId { get; set; }
 
     public OrganizationEntity Organization { get; set; } = null!;
+
+    public ICollection<ParticipantEntity> Participants { get; set; } = new List<ParticipantEntity>();
 }

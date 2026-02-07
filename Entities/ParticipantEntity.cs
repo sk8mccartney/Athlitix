@@ -5,7 +5,6 @@ namespace Athlitix.Entities;
 
 public class ParticipantEntity : BaseEntity
 {
-    public Guid TeamId { get; set; }
     [MaxLength(50)]
     public string FirstName { get; set; } = default!;
     [MaxLength(50)]
@@ -22,4 +21,10 @@ public class ParticipantEntity : BaseEntity
     [Precision(4, 1)]
     public decimal WeightKg { get; set; }
     public DateTimeOffset DateOfBirth { get; set; }
+
+
+    // Foreign key
+    public Guid TeamId { get; set; }
+
+    public TeamEntity Team { get; set; } = null!;
 }

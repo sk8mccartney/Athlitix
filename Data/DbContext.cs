@@ -265,6 +265,205 @@ public class AthlitixContext : DbContext
                     OrganizationId = _organizationId,
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
+                },
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0001"),
+                    Name = "LS1 Leeds Lions",
+                    Description = "Fearless fighters roaring out of central Leeds",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0002"),
+                    Name = "M1 Manchester Maulers",
+                    Description = "Grit-fueled brawlers built for pressure fights",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0003"),
+                    Name = "S6 Sheffield Steel",
+                    Description = "Forged tough with relentless knockout power",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0004"),
+                    Name = "L2 Liverpool Legends",
+                    Description = "Fast-handed fighters with championship ambition",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0005"),
+                    Name = "NE1 Newcastle Nightfall",
+                    Description = "Late-round warriors with ruthless finishes",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0006"),
+                    Name = "B1 Birmingham Brutes",
+                    Description = "Midlands muscle with heavy-hitting intent",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0007"),
+                    Name = "NG1 Nottingham Knockout",
+                    Description = "Precision punchers with outlaw mentality",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0008"),
+                    Name = "LE1 Leicester Lightning",
+                    Description = "Explosive speed and high-volume attacks",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0009"),
+                    Name = "CV1 Coventry Crushers",
+                    Description = "Breakdown specialists who wear opponents out",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0010"),
+                    Name = "DE1 Derby Dominators",
+                    Description = "Ring control experts with suffocating pressure",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0011"),
+                    Name = "EC1 London Empire",
+                    Description = "Elite-level fighters chasing national dominance",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0012"),
+                    Name = "BN1 Brighton Breakers",
+                    Description = "Smooth operators with sudden knockout power",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0013"),
+                    Name = "SO14 Southampton Strikers",
+                    Description = "Sharp-shooting south coast contenders",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0014"),
+                    Name = "PO1 Portsmouth Punishers",
+                    Description = "Hard-nosed fighters with navy-town toughness",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0015"),
+                    Name = "GU1 Guildford Gladiators",
+                    Description = "Modern warriors with old-school grit",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0016"),
+                    Name = "CB1 Cambridge Combat",
+                    Description = "Smart, technical fighters with killer instinct",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0017"),
+                    Name = "BS1 Bristol Brawlers",
+                    Description = "Street-bred toughness with pro-level skill",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0018"),
+                    Name = "EX1 Exeter Enforcers",
+                    Description = "Southern grit with relentless pressure style",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0019"),
+                    Name = "PL1 Plymouth Power",
+                    Description = "Tidal-force punchers from the southwest",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+
+                new TeamEntity()
+                {
+                    Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0020"),
+                    Name = "OX1 Oxford Overlords",
+                    Description = "Calculated destruction with elite ring IQ",
+                    OrganizationId = _organizationId,
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
                 });
         });
         modelBuilder.Entity<ParticipantEntity>(entity =>

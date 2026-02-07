@@ -71,36 +71,62 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-7 proorder-xl-5 box-col-7 proorder-md-5">
-            <div class="card">
-                <div class="card-header card-no-border pb-0">
-                    <div class="header-top">
-                        <h4>Last 10 Winners</h4>
+        <div class="col-xl-12 proorder-xl-12 box-col-7 proorder-md-12">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header card-no-border pb-0">
+                        <div class="header-top">
+                            <h4>Last 10 Winners</h4>
+                        </div>
+                    </div>
+                    <div class="table-responsive theme-scrollbar">
+                        <table class="table">
+                            <thead>
+                                <tr role="row">
+                                    <th>Team Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var team in Model.Teams)
+                                {
+                                    <tr role="row" class="odd">
+                                        <td>@team.Name</td>
+                                        <td>@team.Description</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="card-body pt-0 projects px-0">
-                    <div class="table-responsive theme-scrollbar">
-                        <div id="selling-product_wrapper" class="dataTables_wrapper no-footer">
-                            <div class="dataTables_length">
-                                <table class="table display dataTable no-footer" style="width: 100%;" role="grid">
-                                    <thead>
-                                        <tr role="row">
-                                            <th>Team Name</th>
-                                            <th>Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var team in Model.Teams)
-                                        {
-                                            <tr role="row" class="odd">
-                                                <td>@team.Name</td>
-                                                <td>@team.CreatedAt</td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
+            </div>
+        </div>
+        <div class="col-xl-12 proorder-xl-12 box-col-7 proorder-md-12">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header card-no-border pb-0">
+                        <div class="header-top">
+                            <h4>Last 10 Winners</h4>
                         </div>
+                    </div>
+                    <div class="table-responsive theme-scrollbar">
+                        <table class="table">
+                            <thead>
+                                <tr role="row">
+                                    <th>Name</th>
+                                    <th>Team</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var team in Model.Participants)
+                                {
+                                    <tr role="row" class="odd">
+                                        <td>@team.FirstName</td>
+                                        <td>@team.Team.Name</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

@@ -14,4 +14,6 @@ public class OrganizationEntity : BaseEntity
     public ICollection<CompetitionEntity> Competitions { get; set; } = new List<CompetitionEntity>();
 
     public ICollection<EventTypeEntity> EventTypes { get; set; } = new List<EventTypeEntity>();
+
+    public ICollection<TeamEntity> Teams { get; set; } = new List<TeamEntity>();
 }

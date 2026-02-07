@@ -12,4 +12,6 @@ public class ParticipantModel : BaseModel
     public decimal HeightCm { get; set; }
     public decimal WeightKg { get; set; }
     public DateTimeOffset DateOfBirth { get; set; }
+
+    public TeamModel Team { get; set; } = default!;
 }
