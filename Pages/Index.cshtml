@@ -12,6 +12,32 @@
                     </div>
                 </div>
             </div>
+            <div class="card">
+                <div class="card-header">
+                    <h4>Upcoming Competitions</h4><span>Don't miss the latest competitions</span>
+                </div>
+                <div class="table-responsive theme-scrollbar">
+                    <table class="table">
+                        <thead>
+                            <tr class="border-bottom-primary">
+                                <th scope="col">Competition</th>
+                                <th scope="col">Start</th>
+                                <th scope="col">Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var competition in Model.Competitions)
+                            {
+                                <tr role="row" class="odd">
+                                    <td>@competition.Name</td>
+                                    <td>@competition.StartDate.ToString("dd MMM yyyy")</td>
+                                    <td>@competition.StartDate.ToString("HH:mm")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <div class="col-xl-7 proorder-xl-5 box-col-7 proorder-md-5">
             <div class="col-sm-12">
