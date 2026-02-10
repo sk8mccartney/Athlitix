@@ -24,13 +24,6 @@ public class AthlitixContext : DbContext
     private readonly Guid _eventTypeId1 = Guid.Parse("cac94e39-969d-41ef-9a25-f33675e1fe92");
     private readonly Guid _eventTypeId2 = Guid.Parse("dbc5f1de-fcba-4d0a-8a71-eeb1f209eeff");
     private readonly Guid _eventTypeId3 = Guid.Parse("d9fdad56-2c37-4be7-89ab-1af3cf1142c7");
-    private readonly Guid _eventId = Guid.Parse("3f2dbfda-3842-4bd9-a063-00d5fde0c9a0");
-    private readonly Guid _teamId1 = Guid.Parse("caccb9c5-7556-47a2-848c-176cee5dc643");
-    private readonly Guid _teamId2 = Guid.Parse("0e37b6b5-2a35-4e33-907e-f1c6c0ad7423");
-    private readonly Guid _participantId1 = Guid.Parse("7e6db761-6057-427b-afe5-d575f97c00e7");
-    private readonly Guid _participantId2 = Guid.Parse("09c7c50f-b897-4586-be37-719fd9d11893");
-    private readonly Guid _participantId3 = Guid.Parse("93d6abd2-4651-4a21-9fc5-e9695fc66821");
-    private readonly Guid _participantId4 = Guid.Parse("f4e127d6-6af7-43c9-a471-cf944364f892");
     private readonly DateTime _defaultCreatedDate = DateTime.Parse("2025/01/01");
     private readonly string _salt;
 
@@ -250,24 +243,6 @@ public class AthlitixContext : DbContext
             entity.ToTable("Team").HasData(
                 new TeamEntity()
                 {
-                    Id = _teamId1,
-                    Name = "LS20 Boxing",
-                    Description = "Guisleys premiere boxing club",
-                    OrganizationId = _organizationId,
-                    IsActive = true,
-                    CreatedAt = _defaultCreatedDate
-                },
-                new TeamEntity()
-                {
-                    Id = _teamId2,
-                    Name = "Henrys Boxing",
-                    Description = "Guisleys premiere boxing club",
-                    OrganizationId = _organizationId,
-                    IsActive = true,
-                    CreatedAt = _defaultCreatedDate
-                },
-                new TeamEntity()
-                {
                     Id = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0001"),
                     Name = "LS1 Leeds Lions",
                     Description = "Fearless fighters roaring out of central Leeds",
@@ -469,59 +444,323 @@ public class AthlitixContext : DbContext
         modelBuilder.Entity<ParticipantEntity>(entity =>
         {
             entity.ToTable("Participant").HasData(
-                new ParticipantEntity() { 
-                    Id = _participantId1,
-                    FirstName = "Joe",
-                    LastName = "McCartney",
-                    NickName = "Chunkz",
-                    Email = "chunkz@hotmail.com",
-                    PhoneNumber = "07470797908",
+                new ParticipantEntity()
+                {
+                    Id = Guid.Parse("b1000001-1111-4111-8111-111111111001"),
+                    FirstName = "Jack",
+                    LastName = "Smith",
+                    NickName = "Tank",
+                    Email = "jack.smith1@example.com",
+                    PhoneNumber = "07470000001",
+                    PasswordHash = "",
+                    HeightCm = 172m,
+                    WeightKg = 67m,
+                    DateOfBirth = DateTime.Parse("2006/05/12 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0001"), // LS20 Boxing
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new ParticipantEntity()
+                {
+                    Id = Guid.Parse("b1000002-1111-4111-8111-111111111002"),
+                    FirstName = "Tom",
+                    LastName = "Jones",
+                    NickName = "Flash",
+                    Email = "tom.jones2@example.com",
+                    PhoneNumber = "07470000002",
+                    PasswordHash = "",
+                    HeightCm = 178m,
+                    WeightKg = 71m,
+                    DateOfBirth = DateTime.Parse("2005/09/03 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0001"), // Henrys Boxing
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new ParticipantEntity()
+                {
+                    Id = Guid.Parse("b1000003-1111-4111-8111-111111111003"),
+                    FirstName = "Harry",
+                    LastName = "Brown",
+                    NickName = "Hammer",
+                    Email = "harry.brown3@example.com",
+                    PhoneNumber = "07470000003",
+                    PasswordHash = "",
+                    HeightCm = 180m,
+                    WeightKg = 75m,
+                    DateOfBirth = DateTime.Parse("2004/11/21 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0001"), // LS1 Leeds Lions
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new ParticipantEntity()
+                {
+                    Id = Guid.Parse("b1000004-1111-4111-8111-111111111004"),
+                    FirstName = "Liam",
+                    LastName = "Taylor",
+                    NickName = "Ace",
+                    Email = "liam.taylor4@example.com",
+                    PhoneNumber = "07470000004",
+                    PasswordHash = "",
+                    HeightCm = 175m,
+                    WeightKg = 63.5m,
+                    DateOfBirth = DateTime.Parse("2007/02/10 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0002"), // M1 Manchester Maulers
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new ParticipantEntity()
+                {
+                    Id = Guid.Parse("b1000005-1111-4111-8111-111111111005"),
+                    FirstName = "Josh",
+                    LastName = "Wilson",
+                    NickName = "Crusher",
+                    Email = "josh.wilson5@example.com",
+                    PhoneNumber = "07470000005",
+                    PasswordHash = "",
+                    HeightCm = 182m,
+                    WeightKg = 80m,
+                    DateOfBirth = DateTime.Parse("2003/07/18 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0003"), // S6 Sheffield Steel
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new ParticipantEntity()
+                {
+                    Id = Guid.Parse("b1000006-1111-4111-8111-111111111006"),
+                    FirstName = "Ben",
+                    LastName = "Walker",
+                    NickName = "Spike",
+                    Email = "ben.walker6@example.com",
+                    PhoneNumber = "07470000006",
                     PasswordHash = "",
                     HeightCm = 170m,
-                    WeightKg = 65m,
-                    DateOfBirth = DateTime.Parse("2008/03/03 00:00:00"),
+                    WeightKg = 60m,
+                    DateOfBirth = DateTime.Parse("2008/01/30 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0004"), // L2 Liverpool Legends
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
-                }, new ParticipantEntity()
+                },
+                new ParticipantEntity()
                 {
-                    Id = _participantId2,
-                    FirstName = "Matthew",
-                    LastName = "McCartney",
-                    NickName = "Matt",
-                    Email = "matt@hotmail.com",
-                    PhoneNumber = "07470797908",
+                    Id = Guid.Parse("b1000007-1111-4111-8111-111111111007"),
+                    FirstName = "Sam",
+                    LastName = "White",
+                    NickName = "Storm",
+                    Email = "sam.white7@example.com",
+                    PhoneNumber = "07470000007",
                     PasswordHash = "",
-                    HeightCm = 173m,
+                    HeightCm = 176m,
+                    WeightKg = 67m,
+                    DateOfBirth = DateTime.Parse("2006/06/14 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0005"), // NE1 Newcastle Nightfall
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new ParticipantEntity()
+                {
+                    Id = Guid.Parse("b1000008-1111-4111-8111-111111111008"),
+                    FirstName = "Ryan",
+                    LastName = "Hall",
+                    NickName = "Blade",
+                    Email = "ryan.hall8@example.com",
+                    PhoneNumber = "07470000008",
+                    PasswordHash = "",
+                    HeightCm = 185m,
+                    WeightKg = 85m,
+                    DateOfBirth = DateTime.Parse("2002/10/05 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0006"), // B1 Birmingham Brutes
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new ParticipantEntity()
+                {
+                    Id = Guid.Parse("b1000009-1111-4111-8111-111111111009"),
+                    FirstName = "Luke",
+                    LastName = "Turner",
+                    NickName = "Beast",
+                    Email = "luke.turner9@example.com",
+                    PhoneNumber = "07470000009",
+                    PasswordHash = "",
+                    HeightCm = 179m,
                     WeightKg = 75m,
-                    DateOfBirth = DateTime.Parse("1999/04/15 00:00:00"),
+                    DateOfBirth = DateTime.Parse("2004/04/19 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0007"), // NG1 Nottingham Knockout
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
-                }, new ParticipantEntity()
+                },
+                new ParticipantEntity()
                 {
-                    Id = _participantId3,
-                    FirstName = "Elon",
-                    LastName = "Musk",
-                    NickName = "Moron",
-                    Email = "moron@hotmail.com",
-                    PhoneNumber = "07470797908",
+                    Id = Guid.Parse("b1000010-1111-4111-8111-111111111010"),
+                    FirstName = "Callum",
+                    LastName = "Harris",
+                    NickName = "Bulldog",
+                    Email = "callum.harris10@example.com",
+                    PhoneNumber = "07470000010",
                     PasswordHash = "",
-                    HeightCm = 169m,
-                    WeightKg = 66m,
+                    HeightCm = 183m,
+                    WeightKg = 90m,
+                    DateOfBirth = DateTime.Parse("2001/12/01 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0008"), // LE1 Leicester Lightning
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new ParticipantEntity()
+                {
+                    Id = Guid.Parse("b1000011-1111-4111-8111-111111111011"),
+                    FirstName = "Jake",
+                    LastName = "Roberts",
+                    NickName = "Rocket",
+                    Email = "jake.roberts11@example.com",
+                    PhoneNumber = "07470000011",
+                    PasswordHash = "",
+                    HeightCm = 174m,
+                    WeightKg = 63.5m,
+                    DateOfBirth = DateTime.Parse("2007/03/08 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0009"), // CV1 Coventry Crushers
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new ParticipantEntity()
+                {
+                    Id = Guid.Parse("b1000012-1111-4111-8111-111111111012"),
+                    FirstName = "Connor",
+                    LastName = "Clarke",
+                    NickName = "Iron",
+                    Email = "connor.clarke12@example.com",
+                    PhoneNumber = "07470000012",
+                    PasswordHash = "",
+                    HeightCm = 181m,
+                    WeightKg = 75m,
+                    DateOfBirth = DateTime.Parse("2004/08/22 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0010"), // DE1 Derby Dominators
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new ParticipantEntity()
+                {
+                    Id = Guid.Parse("b1000013-1111-4111-8111-111111111013"),
+                    FirstName = "Dan",
+                    LastName = "Wood",
+                    NickName = "Knuckles",
+                    Email = "dan.wood13@example.com",
+                    PhoneNumber = "07470000013",
+                    PasswordHash = "",
+                    HeightCm = 177m,
+                    WeightKg = 71m,
+                    DateOfBirth = DateTime.Parse("2005/01/14 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0011"), // EC1 London Empire
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new ParticipantEntity()
+                {
+                    Id = Guid.Parse("b1000014-1111-4111-8111-111111111014"),
+                    FirstName = "Alex",
+                    LastName = "Thompson",
+                    NickName = "Shadow",
+                    Email = "alex.thompson14@example.com",
+                    PhoneNumber = "07470000014",
+                    PasswordHash = "",
+                    HeightCm = 184m,
+                    WeightKg = 85m,
+                    DateOfBirth = DateTime.Parse("2002/06/30 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0012"), // BN1 Brighton Breakers
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new ParticipantEntity()
+                {
+                    Id = Guid.Parse("b1000015-1111-4111-8111-111111111015"),
+                    FirstName = "Max",
+                    LastName = "Jackson",
+                    NickName = "Hammer",
+                    Email = "max.jackson15@example.com",
+                    PhoneNumber = "07470000015",
+                    PasswordHash = "",
+                    HeightCm = 179m,
+                    WeightKg = 80m,
+                    DateOfBirth = DateTime.Parse("2003/09/11 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0013"), // SO14 Southampton Strikers
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new ParticipantEntity()
+                {
+                    Id = Guid.Parse("b1000016-1111-4111-8111-111111111016"),
+                    FirstName = "Ollie",
+                    LastName = "Turner",
+                    NickName = "Flash",
+                    Email = "ollie.turner16@example.com",
+                    PhoneNumber = "07470000016",
+                    PasswordHash = "",
+                    HeightCm = 171m,
+                    WeightKg = 60m,
+                    DateOfBirth = DateTime.Parse("2008/04/02 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0014"), // PO1 Portsmouth Punishers
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new ParticipantEntity()
+                {
+                    Id = Guid.Parse("b1000017-1111-4111-8111-111111111017"),
+                    FirstName = "Charlie",
+                    LastName = "Wright",
+                    NickName = "Ace",
+                    Email = "charlie.wright17@example.com",
+                    PhoneNumber = "07470000017",
+                    PasswordHash = "",
+                    HeightCm = 176m,
+                    WeightKg = 67m,
+                    DateOfBirth = DateTime.Parse("2006/11/19 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0015"), // GU1 Guildford Gladiators
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new ParticipantEntity()
+                {
+                    Id = Guid.Parse("b1000018-1111-4111-8111-111111111018"),
+                    FirstName = "Theo",
+                    LastName = "Patel",
+                    NickName = "Storm",
+                    Email = "theo.patel18@example.com",
+                    PhoneNumber = "07470000018",
+                    PasswordHash = "",
+                    HeightCm = 182m,
+                    WeightKg = 75m,
+                    DateOfBirth = DateTime.Parse("2004/02/27 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0016"), // CB1 Cambridge Combat
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                },
+                new ParticipantEntity()
+                {
+                    Id = Guid.Parse("b1000019-1111-4111-8111-111111111019"),
+                    FirstName = "Ethan",
+                    LastName = "Davies",
+                    NickName = "Bulldog",
+                    Email = "ethan.davies19@example.com",
+                    PhoneNumber = "07470000019",
+                    PasswordHash = "",
+                    HeightCm = 186m,
+                    WeightKg = 90m,
                     DateOfBirth = DateTime.Parse("2001/05/06 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0017"), // BS1 Bristol Brawlers
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
-                }, new ParticipantEntity()
+                },
+                new ParticipantEntity()
                 {
-                    Id = _participantId4,
-                    FirstName = "Chuck",
-                    LastName = "Norris",
-                    NickName = "Chuck",
-                    Email = "chuck@hotmail.com",
-                    PhoneNumber = "07470797908",
+                    Id = Guid.Parse("b1000020-1111-4111-8111-111111111020"),
+                    FirstName = "Ryan",
+                    LastName = "Green",
+                    NickName = "Beast",
+                    Email = "ryan.green20@example.com",
+                    PhoneNumber = "07470000020",
                     PasswordHash = "",
-                    HeightCm = 165m,
-                    WeightKg = 61m,
-                    DateOfBirth = DateTime.Parse("1997/09/28 00:00:00"),
+                    HeightCm = 188m,
+                    WeightKg = 100m,
+                    DateOfBirth = DateTime.Parse("1999/12/17 00:00:00"),
+                    TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0018"), //
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
                 });

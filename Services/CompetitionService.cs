@@ -27,7 +27,10 @@ public class CompetitionService : ICompetitionService
 
         var competitions = _dbContext.Competitions.Where(e => e.OrganizationId == organizationId).OrderBy(e => e.StartDate);
         foreach (var competition in competitions) {
-            list.Add(_mapper.ToModel(competition));
+            var competitionModel = _mapper.ToModel(competition);
+            competitionModel.EventCount = competition.Events.Count();
+
+            list.Add(competitionModel);
         }
 
         return list;

@@ -14,4 +14,18 @@ public class ParticipantModel : BaseModel
     public DateTimeOffset DateOfBirth { get; set; }
 
     public TeamModel Team { get; set; } = default!;
+
+    public int Age
+    {
+        get {
+            var today = DateTime.Today;
+            var age = today.Year - DateOfBirth.Year;
+
+            if (DateOfBirth.Date > today.AddYears(-age))
+                age--;
+
+            return age;
+        }
+        private set { }
+    }
 }

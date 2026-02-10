@@ -9,4 +9,6 @@ public class CompetitionModel : BaseModel
     public DateTimeOffset StartDate { get; set; }
 
     public DateTimeOffset FinishDate { get; set; }
+
+    public int EventCount { get; set; }
 }

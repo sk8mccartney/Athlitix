@@ -21,8 +21,8 @@
                         <thead>
                             <tr class="border-bottom-primary">
                                 <th scope="col">Competition</th>
-                                <th scope="col">Start</th>
-                                <th scope="col">Time</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Bouts</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,7 +31,7 @@
                                 <tr role="row" class="odd">
                                     <td>@competition.Name</td>
                                     <td>@competition.StartDate.ToString("dd MMM yyyy")</td>
-                                    <td>@competition.StartDate.ToString("HH:mm")</td>
+                                    <td>@competition.EventCount</td>
                                 </tr>
                             }
                         </tbody>
@@ -85,6 +85,7 @@
                                 <tr role="row">
                                     <th>Team Name</th>
                                     <th>Description</th>
+                                    <th>Fighters</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -93,6 +94,7 @@
                                     <tr role="row" class="odd">
                                         <td>@team.Name</td>
                                         <td>@team.Description</td>
+                                        <td>@team.ParticipantCount</td>
                                     </tr>
                                 }
                             </tbody>
@@ -114,15 +116,23 @@
                             <thead>
                                 <tr role="row">
                                     <th>Name</th>
+                                    <th>AKA</th>
                                     <th>Team</th>
+                                    <th>Weight</th>
+                                    <th>Height</th>
+                                    <th>Age</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var team in Model.Participants)
                                 {
                                     <tr role="row" class="odd">
-                                        <td>@team.FirstName</td>
-                                        <td>@team.Team.Name</td>
+                                        <td>@team.FirstName @team.LastName</td>
+                                        <td>@team.NickName</td>
+                                        <td>@team.Team?.Name</td>
+                                        <td>@team.WeightKg kg</td>
+                                        <td>@team.HeightCm cm</td>
+                                        <td>@team.Age</td>
                                     </tr>
                                 }
                             </tbody>
