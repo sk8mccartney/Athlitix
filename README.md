@@ -1,6 +1,7 @@
 ﻿# **Athlitix**
 
 *School project by Skate McCartney*
+*Created 1st December 2024*
 
 **Athlitix** is a sports event management and tracking application, designed to help organizers and participants efficiently monitor sporting events. The app integrates AI to predict outcomes based on participants' profiles and historical performance data.
 
