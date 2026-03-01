@@ -764,6 +764,128 @@ public class AthlitixContext : DbContext
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
                 });
+
+            var random = new Random();
+
+            // All 20 team IDs
+            var teamIds = new[]
+            {
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0001"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0002"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0003"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0004"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0005"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0006"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0007"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0008"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0009"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0010"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0011"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0012"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0013"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0014"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0015"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0016"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0017"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0018"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0019"),
+                Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0020"),
+            };
+
+            var firstNames = new[]
+            {
+                "Jayden","Tyler","Reece","Mason","Corey","Kieran","Nathan","Aaron",
+                "Zack","Jordan","Blake","Riley","Cameron","Lewis","Kyle","Dominic",
+                "Sean","Adam","Bradley","Mitchell","Rhys","Dylan","Leon","Kai",
+                "Liam","Noah","Ethan","Logan","Isaac","Callum","Harrison","Jacob",
+                "Elijah","Aiden","Lucas","Owen","Max","Harley","Jaxon","Caleb",
+                "Hunter","Connor","Elliot","Miles","Austin","Joel","Brody","Ryan",
+                "Finn","Theo","Toby","Archie","Rowan","Jesse","Alex","Charlie",
+                "Bobby","Cody","Evan","Freddie","George","Henry","Jude","Luca",
+                "Marcus","Oscar","Reuben","Spencer","Tristan","Zane","Ashton",
+                "Declan","Ezra","Felix","Grayson","Hugo","Ivan","Jasper","Keaton"
+            };
+
+            var lastNames = new[]
+            {
+                "Taylor","Wilson","Evans","Thomas","Robinson","Walker","Hall","Allen",
+                "Young","King","Wright","Scott","Green","Baker","Adams","Nelson",
+                "Carter","Mitchell","Perez","Turner","Phillips","Campbell",
+                "Parker","Edwards","Collins","Stewart","Sanchez","Morris","Rogers",
+                "Reed","Cook","Morgan","Bell","Murphy","Bailey","Rivera","Cooper",
+                "Richardson","Cox","Howard","Ward","Torres","Peterson","Gray",
+                "Ramirez","James","Watson","Brooks","Kelly","Sanders","Price",
+                "Bennett","Wood","Barnes","Ross","Henderson","Coleman","Jenkins",
+                "Perry","Powell","Long","Patterson","Hughes","Flores","Washington",
+                "Butler","Simmons","Foster","Gonzalez","Bryant","Alexander",
+                "Russell","Griffin","Diaz","Hayes","Myers","Ford","Hamilton"
+            };
+
+            var nickNames = new[]
+            {
+                "Crusher","Flash","Tank","Bullet","Hammer","Storm","Beast",
+                "Shadow","Razor","Blaze","Knuckles","Iron","Fury","Viper",
+                "Phantom","Reaper","Titan","Venom","Wolf","Falcon","Hawk","Cobra",
+                "Jaguar","Panther","Rogue","Sniper","Maverick","Bandit","Outlaw",
+                "Striker","Warlord","Gladiator","Knight","Spartan","Samurai",
+                "Vandal","Ghost","Onyx","Frost","Inferno","Pyro","Blizzard",
+                "Thunder","Lightning","Cyclone","Tornado","Quake","Tsunami",
+                "Drift","Nitro","Turbo","Diesel","Riptide","Tempest","Savage",
+                "Berserker","Wraith","Specter","Oblivion","Nova","Comet","Meteor",
+                "Cosmo","Orion","Atlas","Zephyr","Draco","Hydra","Kraken",
+                "Goliath","Colossus","Rampage","Rumble","Brawler","Bruiser",
+                "Ranger","Hunter","Tracker","Predator","Stalker","Sentinel",
+                "Guardian","Vortex","Cipher","Glitch","Matrix","Pixel","Byte",
+                "Echo","Pulse","Static","Voltage","Current","Circuit","Spark",
+                "Fang","Claw","Talon","Fang","Venator","Scorpion","Mantis",
+                "Rhino","Bulldog","Grizzly","Kodiak","Raptor","Phoenix",
+                "Ember","Ash","Cinder","Smokes","Slate","Steel","Chrome",
+                "Blade","Dagger","Saber","Cutlass","Axe","Hatchet","Mace",
+                "Brick","Anvil","Forge","Cannon","Rocket","Missile","Ammo",
+                "Ace","Kingpin","Boss","Chief","Captain","Major","General",
+                "Alpha","Omega","Prime","Zero","Hex","Jinx","Havoc",
+                "Riot","Mayhem","Chaos","VenatorX","Nightfall","Darkstar",
+                "Blackout","Overdrive","Aftershock","Deadshot","Longshot",
+                "Quickdraw","Sharpshot","Bullseye","Crossfire","Ricochet"
+            };
+
+            var generatedParticipants = new List<ParticipantEntity>();
+
+            for (int i = 0; i < 200; i++)
+            {
+                var firstName = firstNames[random.Next(firstNames.Length)];
+                var lastName = lastNames[random.Next(lastNames.Length)];
+
+                // Age between 16–35
+                var age = random.Next(16, 36);
+                var dob = DateTime.Today.AddYears(-age)
+                                        .AddDays(random.Next(0, 365));
+
+                // Boxing weight range 55kg – 120kg
+                var weight = Math.Round((decimal)(random.NextDouble() * 65 + 55), 1);
+
+                // Height 165cm – 200cm
+                var height = Math.Round((decimal)(random.Next(165, 201)));
+
+                generatedParticipants.Add(new ParticipantEntity
+                {
+                    Id = Guid.NewGuid(),
+                    FirstName = firstName,
+                    LastName = lastName,
+                    NickName = nickNames[random.Next(nickNames.Length)],
+                    Email = $"{firstName.ToLower()}.{lastName.ToLower()}{i + 100}@example.com",
+                    PhoneNumber = $"07470{(100000 + i)}",
+                    PasswordHash = "",
+                    HeightCm = height,
+                    WeightKg = weight,
+                    DateOfBirth = dob,
+                    TeamId = teamIds[random.Next(teamIds.Length)], // Uneven random distribution
+                    IsActive = true,
+                    CreatedAt = _defaultCreatedDate
+                });
+            }
+
+            entity.HasData(generatedParticipants);
         });
     }
 }
