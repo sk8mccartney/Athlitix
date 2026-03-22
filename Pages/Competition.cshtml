@@ -1,0 +1,42 @@
+﻿@page
+@model CompetitionPageModel
+
+<div class="container-fluid default-dashboard">
+    <div class="row widget-grid">
+        <div class="col-xl-12 proorder-xl-12 box-col-12 proorder-md-5">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Competitions <button class="btn btn-sm btn-success pull-right">Add Competition</button></h4><span>List of all competitions, use the buttons to add new competitions or edit existing competitions</span>
+                    </div>
+                    <div class="table-responsive theme-scrollbar">
+                        <table class="table">
+                            <thead>
+                                <tr class="border-bottom-primary">
+                                    <th scope="col">Competition</th>
+                                    <th scope="col">Event</th>
+                                    <th scope="col">Start</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var competition in Model.Competitions)
+                                {
+                                    <tr role="row" class="odd">
+                                        <td>@competition.Name</td>
+                                        <td>@competition.Description</td>
+                                        <td>@competition.StartDate.ToString("dd MMM yyyy")</td>
+                                        <td>@competition.StartDate.ToString("HH:mm")</td>
+                                        <td><button class="btn btn-sm btn-primary">Edit</button></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

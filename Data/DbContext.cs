@@ -27,7 +27,9 @@ public class AthlitixContext : DbContext
     private readonly DateTime _defaultCreatedDate = DateTime.Parse("2025/01/01");
     private readonly string _salt;
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     public AthlitixContext(DbContextOptions<AthlitixContext> options, IOptions<SecuritySettings> securityOptions) : base(options)
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     {
         _salt = securityOptions.Value.PasswordSalt ?? throw new InvalidOperationException("Missing salt in configuration.");
     }
@@ -456,6 +458,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 172m,
                     WeightKg = 67m,
                     DateOfBirth = DateTime.Parse("2006/05/12 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0001"), // LS20 Boxing
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -472,6 +476,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 178m,
                     WeightKg = 71m,
                     DateOfBirth = DateTime.Parse("2005/09/03 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0001"), // Henrys Boxing
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -488,6 +494,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 180m,
                     WeightKg = 75m,
                     DateOfBirth = DateTime.Parse("2004/11/21 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0001"), // LS1 Leeds Lions
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -504,6 +512,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 175m,
                     WeightKg = 63.5m,
                     DateOfBirth = DateTime.Parse("2007/02/10 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0002"), // M1 Manchester Maulers
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -520,6 +530,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 182m,
                     WeightKg = 80m,
                     DateOfBirth = DateTime.Parse("2003/07/18 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0003"), // S6 Sheffield Steel
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -536,6 +548,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 170m,
                     WeightKg = 60m,
                     DateOfBirth = DateTime.Parse("2008/01/30 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0004"), // L2 Liverpool Legends
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -552,6 +566,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 176m,
                     WeightKg = 67m,
                     DateOfBirth = DateTime.Parse("2006/06/14 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0005"), // NE1 Newcastle Nightfall
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -568,6 +584,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 185m,
                     WeightKg = 85m,
                     DateOfBirth = DateTime.Parse("2002/10/05 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0006"), // B1 Birmingham Brutes
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -584,6 +602,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 179m,
                     WeightKg = 75m,
                     DateOfBirth = DateTime.Parse("2004/04/19 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0007"), // NG1 Nottingham Knockout
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -600,6 +620,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 183m,
                     WeightKg = 90m,
                     DateOfBirth = DateTime.Parse("2001/12/01 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0008"), // LE1 Leicester Lightning
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -616,6 +638,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 174m,
                     WeightKg = 63.5m,
                     DateOfBirth = DateTime.Parse("2007/03/08 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0009"), // CV1 Coventry Crushers
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -632,6 +656,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 181m,
                     WeightKg = 75m,
                     DateOfBirth = DateTime.Parse("2004/08/22 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0010"), // DE1 Derby Dominators
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -648,6 +674,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 177m,
                     WeightKg = 71m,
                     DateOfBirth = DateTime.Parse("2005/01/14 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0011"), // EC1 London Empire
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -664,6 +692,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 184m,
                     WeightKg = 85m,
                     DateOfBirth = DateTime.Parse("2002/06/30 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0012"), // BN1 Brighton Breakers
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -680,6 +710,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 179m,
                     WeightKg = 80m,
                     DateOfBirth = DateTime.Parse("2003/09/11 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0013"), // SO14 Southampton Strikers
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -696,6 +728,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 171m,
                     WeightKg = 60m,
                     DateOfBirth = DateTime.Parse("2008/04/02 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0014"), // PO1 Portsmouth Punishers
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -712,6 +746,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 176m,
                     WeightKg = 67m,
                     DateOfBirth = DateTime.Parse("2006/11/19 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0015"), // GU1 Guildford Gladiators
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -728,6 +764,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 182m,
                     WeightKg = 75m,
                     DateOfBirth = DateTime.Parse("2004/02/27 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0016"), // CB1 Cambridge Combat
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -744,6 +782,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 186m,
                     WeightKg = 90m,
                     DateOfBirth = DateTime.Parse("2001/05/06 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0017"), // BS1 Bristol Brawlers
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -760,6 +800,8 @@ public class AthlitixContext : DbContext
                     HeightCm = 188m,
                     WeightKg = 100m,
                     DateOfBirth = DateTime.Parse("1999/12/17 00:00:00"),
+                    Record = "Win = 3, Loss 2, Draw 0",
+                    Notes = "Taken 3 months off",
                     TeamId = Guid.Parse("a1c3b6c2-4d5f-4c2a-9a01-1f7b1c9a0018"), //
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
@@ -867,6 +909,59 @@ public class AthlitixContext : DbContext
                 // Height 165cm – 200cm
                 var height = Math.Round((decimal)(random.Next(165, 201)));
 
+                // ----- REALISTIC RECORD GENERATOR -----
+
+                int totalFights;
+
+                // 70% chance: 0–3 fights (most fighters)
+                if (random.NextDouble() < 0.7)
+                {
+                    totalFights = random.Next(0, 4);
+                }
+                // 20% chance: 4–10 fights
+                else if (random.NextDouble() < 0.9)
+                {
+                    totalFights = random.Next(4, 11);
+                }
+                // 10% chance: 20–35 fights (experienced fighters)
+                else
+                {
+                    totalFights = random.Next(20, 36);
+                }
+
+                int wins = 0;
+                int losses = 0;
+                int draws = 0;
+
+                if (totalFights > 0)
+                {
+                    // Ensure most fighters have at least 1 loss or draw (80% chance)
+                    bool forceNonPerfect = random.NextDouble() < 0.8;
+
+                    if (forceNonPerfect && totalFights > 1)
+                    {
+                        // Reserve 1 fight as loss or draw
+                        if (random.NextDouble() < 0.75)
+                            losses = 1;
+                        else
+                            draws = 1;
+
+                        totalFights--;
+                    }
+
+                    for (int f = 0; f < totalFights; f++)
+                    {
+                        double outcome = random.NextDouble();
+
+                        if (outcome < 0.55)
+                            wins++;
+                        else if (outcome < 0.9)
+                            losses++;
+                        else
+                            draws++;
+                    }
+                }
+
                 generatedParticipants.Add(new ParticipantEntity
                 {
                     Id = Guid.NewGuid(),
@@ -880,6 +975,8 @@ public class AthlitixContext : DbContext
                     WeightKg = weight,
                     DateOfBirth = dob,
                     TeamId = teamIds[random.Next(teamIds.Length)], // Uneven random distribution
+                    Record = $"Win = {wins}, Loss = {losses}, Draw = {draws}",
+                    Notes = string.Empty,
                     IsActive = true,
                     CreatedAt = _defaultCreatedDate
                 });

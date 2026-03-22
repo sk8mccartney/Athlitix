@@ -21,7 +21,8 @@ public class ParticipantEntity : BaseEntity
     [Precision(4, 1)]
     public decimal WeightKg { get; set; }
     public DateTimeOffset DateOfBirth { get; set; }
-
+    public string Record { get; set; } = default!;
+    public string Notes { get; set; } = default!;
 
     // Foreign key
     public Guid TeamId { get; set; }

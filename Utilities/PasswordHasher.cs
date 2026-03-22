@@ -13,7 +13,8 @@ public static class PasswordHasher
         var passwordBytes = Encoding.UTF8.GetBytes(password);
 
         // Use PBKDF2 (Rfc2898DeriveBytes)
-        using var pbkdf2 = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 100000, HashAlgorithmName.SHA256);
+        Rfc2898DeriveBytes rfc2898DeriveBytes = new(passwordBytes, saltBytes, 100000, HashAlgorithmName.SHA256);
+        using var pbkdf2 = rfc2898DeriveBytes;
         var hash = pbkdf2.GetBytes(32); // 32 bytes = 256-bit hash
 
         // Return as Base64 string

@@ -18,6 +18,8 @@ public class ParticipantMapper : BaseMapper<ParticipantEntity, ParticipantModel>
         model.HeightCm = entity.HeightCm;
         model.WeightKg = entity.WeightKg;
         model.DateOfBirth = entity.DateOfBirth;
+        model.Record = entity.Record;
+        model.Notes = entity.Notes;
     }
 
     protected override void MapModelToEntity(ParticipantModel model, ParticipantEntity entity)
@@ -32,5 +34,7 @@ public class ParticipantMapper : BaseMapper<ParticipantEntity, ParticipantModel>
         entity.HeightCm = model.HeightCm;
         entity.WeightKg = model.WeightKg;
         entity.DateOfBirth = model.DateOfBirth;
+        entity.Record = model.Record;
+        entity.Notes = model.Notes;
     }
 }
