@@ -253,21 +253,9 @@
     <script src="~/assets/js/script1.js"></script>
     <!-- Plugin used-->
     <script>new WOW().init();</script>
+    @if (IsSectionDefined("Scripts"))
+    {
+        @await RenderSectionAsync("Scripts")
+    }
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-@* 
-
-            
-    @await RenderSectionAsync("Scripts", required: false) *@

@@ -8,7 +8,7 @@ public static class CommonMapping
         target.IsActive = source.IsActive;
         target.CreatedAt = source.CreatedAt;
         target.CreatedBy = source.CreatedBy;
-        target.ModifiedAt = source.ModifiedAt;
+        target.ModifiedAt = source.ModifiedAt ?? DateTime.MinValue;
         target.ModifiedBy = source.ModifiedBy;
     }
 }

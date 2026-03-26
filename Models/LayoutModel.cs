@@ -8,7 +8,7 @@ public class LayoutModel : PageModel
 
     private readonly IOrganizationService _organizationService;
 
-    protected readonly Guid OrganizationId = Guid.Parse("5835ca66-1356-42a5-a36a-cf1a019189f1");
+    public readonly Guid OrganizationId = Guid.Parse("5835ca66-1356-42a5-a36a-cf1a019189f1");
 
     public string OrganizationName { get; set; } = default!;
     public string OrganizationDescription { get; set; } = default!;

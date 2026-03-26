@@ -11,7 +11,7 @@ public abstract class BaseMapper<TEntity, TModel> : IMapper<TEntity, TModel>
         var model = new TModel();
 
         MapEntityToModel(entity, model);
-        CommonMapping.CopyCommonProperties(model, entity);
+        CommonMapping.CopyCommonProperties(entity, model);
 
         return model;
     }
@@ -23,7 +23,7 @@ public abstract class BaseMapper<TEntity, TModel> : IMapper<TEntity, TModel>
         var entity = new TEntity();
 
         MapModelToEntity(model, entity);
-        CommonMapping.CopyCommonProperties(entity, model);
+        CommonMapping.CopyCommonProperties(model, entity);
 
         return entity;
     }

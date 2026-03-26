@@ -7,14 +7,14 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Competitions <button class="btn btn-sm btn-success pull-right">Add Competition</button></h4><span>List of all competitions, use the buttons to add new competitions or edit existing competitions</span>
+                        <h4>Competitions <button class="btn btn-sm btn-success pull-right competition-button" type="button" data-bs-toggle="modal" data-bs-target="#modal-competition" data-id="00000000-0000-0000-0000-000000000000">Add Competition</button></h4><span>List of all competitions, use the buttons to add new competitions or edit existing competitions</span>
                     </div>
                     <div class="table-responsive theme-scrollbar">
                         <table class="table">
                             <thead>
                                 <tr class="border-bottom-primary">
-                                    <th scope="col">Competition</th>
-                                    <th scope="col">Event</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Description</th>
                                     <th scope="col">Start</th>
                                     <th scope="col">Time</th>
                                     <th scope="col">Edit</th>
@@ -28,7 +28,7 @@
                                         <td>@competition.Description</td>
                                         <td>@competition.StartDate.ToString("dd MMM yyyy")</td>
                                         <td>@competition.StartDate.ToString("HH:mm")</td>
-                                        <td><button class="btn btn-sm btn-primary">Edit</button></td>
+                                        <td><button class="btn btn-sm btn-primary competition-button" type="button" data-bs-toggle="modal" data-bs-target="#modal-competition" data-id="@competition.Id">Edit</button></td>
                                     </tr>
                                 }
                             </tbody>
@@ -39,4 +39,49 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modal-competition" tabindex="-1" role="dialog" aria-labelledby="modal-competition" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content dark-sign-up overflow-hidden">
+            <div class="modal-body social-profile text-start">
+                <div class="modal-toggle-wrapper">
+                    <h4 class="text-dark">Competition</h4>
+                    <p>
+                        Fill in your information below to continue.
+                    </p>
+                    <form class="row g-3">
+                        <div class="col-md-12">
+                            <label class="form-label" for="competition-name">Name</label>
+                            <input class="form-control" id="competition-name" type="text" placeholder="Name" />
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="competition-description">Description</label>
+                            <input class="form-control" id="competition-description" type="text" placeholder="Description" />
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="competition-start-date">Start</label>
+                            <input class="form-control digits" id="competition-start-date" type="date" value="2026-01-01" />
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="competition-start-time">Time</label>
+                            <input class="form-control digits" id="competition-start-time" type="time" value="20:00:00" />
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="button" id="competition-submit">Submit</button>
+                            <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="competition-id" value="00000000-0000-0000-0000-000000000000" />
+<input type="hidden" id="organization-id" value="@Model.OrganizationId" />
+
+@section Scripts {
+    <script src="~/assets/js/sweet-alert/sweetalert.min.js"></script>
+    <script src="~/js/competition.js?t=@DateTime.Now"></script>
+}
 
