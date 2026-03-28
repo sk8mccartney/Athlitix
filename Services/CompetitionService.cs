@@ -81,4 +81,18 @@ public class CompetitionService : ICompetitionService
             _dbContext.SaveChanges();
         }
     }
+
+    public void Delete(Guid id)
+    {
+        _logger.LogInformation("Delete competition Id: {id}.", id);
+
+        var competition = _dbContext.Competitions.FirstOrDefault(c => c.Id == id);
+        if (competition == null)
+        {
+            throw new Exception($"Can not find competion with id {id}");
+        }
+
+        _dbContext.Competitions.Remove(competition);
+        _dbContext.SaveChanges();
+    }
 }

@@ -7,7 +7,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Competitions <button class="btn btn-sm btn-success pull-right competition-button" type="button" data-bs-toggle="modal" data-bs-target="#modal-competition" data-id="00000000-0000-0000-0000-000000000000">Add Competition</button></h4><span>List of all competitions, use the buttons to add new competitions or edit existing competitions</span>
+                        <h4>Competitions <button class="btn btn-sm btn-success pull-right competition-btn" type="button" data-bs-toggle="modal" data-bs-target="#modal-competition" data-id="00000000-0000-0000-0000-000000000000">Add Competition</button></h4><span>List of all competitions, use the buttons to add new competitions or edit existing competitions</span>
                     </div>
                     <div class="table-responsive theme-scrollbar">
                         <table class="table">
@@ -18,6 +18,7 @@
                                     <th scope="col">Start</th>
                                     <th scope="col">Time</th>
                                     <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -28,7 +29,8 @@
                                         <td>@competition.Description</td>
                                         <td>@competition.StartDate.ToString("dd MMM yyyy")</td>
                                         <td>@competition.StartDate.ToString("HH:mm")</td>
-                                        <td><button class="btn btn-sm btn-primary competition-button" type="button" data-bs-toggle="modal" data-bs-target="#modal-competition" data-id="@competition.Id">Edit</button></td>
+                                        <td><button class="btn btn-sm btn-primary competition-btn" type="button" data-bs-toggle="modal" data-bs-target="#modal-competition" data-id="@competition.Id">Edit</button></td>
+                                        <td><button class="btn btn-sm btn-danger competition-delete-btn" type="button" data-id="@competition.Id">Delete</button></td>
                                     </tr>
                                 }
                             </tbody>
@@ -67,7 +69,7 @@
                             <input class="form-control digits" id="competition-start-time" type="time" value="20:00:00" />
                         </div>
                         <div class="col-12">
-                            <button class="btn btn-primary" type="button" id="competition-submit">Submit</button>
+                            <button class="btn btn-primary" type="button" id="competition-submit-btn">Submit</button>
                             <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancel</button>
                         </div>
                     </form>

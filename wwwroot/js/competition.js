@@ -1,21 +1,14 @@
-﻿$('.competition-button').on('click', function () {
+﻿$('.competition-btn').on('click', function () {
     var id = $(this).data('id');
-
     $('#competition-id').val(id);
 
     if (id === '00000000-0000-0000-0000-000000000000') {
-        console.log('Creating a new competition');
-
         $('#competition-name').val('');
         $('#competition-description').val('');
         $('#competition-start-date').val(new Date().toISOString().substring(0, 10));
         $('#competition-start-time').val('20:00');
     } else {
-        console.log('Editing a competition');
-
         $.getJSON('/api/competition/' + id, function (json) {
-            console.log('Response: ', json);
-
             $('#competition-name').val(json.name);
             $('#competition-description').val(json.description);
             $('#competition-start-date').val(json.startDate.substring(0, 10));
@@ -24,10 +17,20 @@
     }
 });
 
-$('#competition-submit').on('click', function () {
-    console.log('Saving a competition');
-
+$('#competition-submit-btn').on('click', function () {
     var id = $('#competition-id').val();
+    var name = $('#competition-name').val();
+    var description = $('#competition-description').val();
+
+    if (!name || !description) {
+        Swal.fire({
+            title: 'Missing information!',
+            text: 'Name and Description are required!',
+            icon: 'warning',
+        });
+
+        return;
+    }
 
     var request = {
         id: id,
@@ -38,20 +41,17 @@ $('#competition-submit').on('click', function () {
         organizationId: $('#organization-id').val()
     };
 
-    console.log('Competition body: ', request);
-
     $.ajax({
         url: '/api/competition/save',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(request),
         success: function (response) {
-            console.log('Success:', response);
             $('#modal-competition').modal('hide');
 
             Swal.fire({
-                icon: "success",
-                title: "Your competition has been saved",
+                icon: 'success',
+                title: 'Your competition has been saved',
                 showConfirmButton: false,
                 timer: 1500,
             });
@@ -59,13 +59,45 @@ $('#competition-submit').on('click', function () {
             setTimeout(() => location.reload(), 1500);
         },
         error: function (err) {
-            console.error('Error:', err);
             $('#modal-competition').modal('hide');
 
             Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Something went wrong! Your competition has not been saved, try again.",
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong! Your competition has not been saved, try again.',
+            });
+        }
+    });
+});
+
+$('.competition-delete-btn').on('click', function () {
+    var id = $(this).data('id');
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: 'You won\'t be able to revert this!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: '/api/competition/' + id,
+                type: 'DELETE',
+                success: function () {
+                    Swal.fire({
+                        title: 'Deleted!',
+                        text: 'Your file has been deleted.',
+                        icon: 'success',
+                    });
+                },
+                error: function (xhr) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong! We could not delete this competition, try again.',
+                    });
+                }
             });
         }
     });

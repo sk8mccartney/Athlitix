@@ -1,5 +1,4 @@
 ﻿using Athlitix.Controllers.Requests;
-using Athlitix.Models;
 using Athlitix.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,7 +35,7 @@ public class CompetitionController : ControllerBase
     }
 
     [HttpPost("save")]
-    public IActionResult Save([FromBody]CompetitionRequest request)
+    public IActionResult Save([FromBody] CompetitionRequest request)
     {
         try
         {
@@ -48,6 +47,23 @@ public class CompetitionController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Can not save competition!");
+
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete([FromRoute] Guid id)
+    {
+        try
+        {
+            _competitionService.Delete(id);
+
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
 
             return BadRequest(ex.Message);
         }
