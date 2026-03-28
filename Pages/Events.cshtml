@@ -1,0 +1,89 @@
+﻿@page
+@model EventsPageModel
+
+<div class="container-fluid default-dashboard">
+    <div class="row widget-grid">
+        <div class="col-xl-12 proorder-xl-12 box-col-12 proorder-md-5">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Events <button class="btn btn-sm btn-success pull-right event-btn" type="button" data-bs-toggle="modal" data-bs-target="#modal-event" data-id="00000000-0000-0000-0000-000000000000">Add Event</button></h4><span>List of all events, use the buttons to add new events or edit existing events</span>
+                    </div>
+                    <div class="table-responsive theme-scrollbar">
+                        <table class="table">
+                            <thead>
+                                <tr class="border-bottom-primary">
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Start</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var evt in Model.Events)
+                                {
+                                    <tr role="row" class="odd">
+                                        <td>@evt.Name</td>
+                                        <td>@evt.Description</td>
+                                        <td>@evt.StartDate.ToString("dd MMM yyyy")</td>
+                                        <td>@evt.StartDate.ToString("HH:mm")</td>
+                                        <td><button class="btn btn-sm btn-primary event-btn" type="button" data-bs-toggle="modal" data-bs-target="#modal-event" data-id="@evt.Id">Edit</button></td>
+                                        <td><button class="btn btn-sm btn-danger event-delete-btn" type="button" data-id="@evt.Id">Delete</button></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-event" tabindex="-1" role="dialog" aria-labelledby="modal-event" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content dark-sign-up overflow-hidden">
+            <div class="modal-body social-profile text-start">
+                <div class="modal-toggle-wrapper">
+                    <h4 class="text-dark">Event</h4>
+                    <p>
+                        Fill in your information below to continue.
+                    </p>
+                    <form class="row g-3">
+                        <div class="col-md-12">
+                            <label class="form-label" for="event-name">Name</label>
+                            <input class="form-control" id="event-name" type="text" placeholder="Name" />
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="event-description">Description</label>
+                            <input class="form-control" id="event-description" type="text" placeholder="Description" />
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="event-start-date">Start</label>
+                            <input class="form-control digits" id="event-start-date" type="date" value="2026-01-01" />
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="event-start-time">Time</label>
+                            <input class="form-control digits" id="event-start-time" type="time" value="20:00:00" />
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="button" id="event-submit-btn">Submit</button>
+                            <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="event-id" value="00000000-0000-0000-0000-000000000000" />
+<input type="hidden" id="organization-id" value="@Model.OrganizationId" />
+
+@section Scripts {
+    <script src="~/assets/js/sweet-alert/sweetalert.min.js"></script>
+    <script src="~/js/events.js?t=@DateTime.Now"></script>
+}
+
