@@ -89,7 +89,10 @@ $('.competition-delete-btn').on('click', function () {
                         title: 'Deleted!',
                         text: 'Your file has been deleted.',
                         icon: 'success',
+                        timer: 1500,
                     });
+
+                    setTimeout(() => location.reload(), 1500);
                 },
                 error: function (xhr) {
                     Swal.fire({
