@@ -10,5 +10,9 @@ public class EventModel : BaseModel
 
     public DateTimeOffset FinishDate { get; set; }
 
+    public Guid EventTypeId { get; set; }
+
+    public Guid CompetitionId { get; set; }
+
     public CompetitionModel Competition { get; set; } = default!;
 }

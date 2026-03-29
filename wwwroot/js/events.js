@@ -9,6 +9,8 @@
         $('#event-start-time').val('20:00');
     } else {
         $.getJSON('/api/event/' + id, function (json) {
+            $('#event-competition-id').val(json.competitionId.toString());
+            $('#event-type-id').val(json.eventTypeId.toString());
             $('#event-name').val(json.name);
             $('#event-description').val(json.description);
             $('#event-start-date').val(json.startDate.substring(0, 10));
@@ -34,6 +36,8 @@ $('#event-submit-btn').on('click', function () {
 
     var request = {
         id: id,
+        competitionId: $('#event-competition-id').val(),
+        eventTypeId: $('#event-type-id').val(),
         name: $('#event-name').val(),
         description: $('#event-description').val(),
         startDate: $('#event-start-date').val(),

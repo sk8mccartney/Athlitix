@@ -53,6 +53,24 @@
                     </p>
                     <form class="row g-3">
                         <div class="col-md-12">
+                            <label class="form-label" for="event-competition-id">Competition</label>
+                            <select class="form-select" id="event-competition-id">
+                                @foreach (var competition in Model.Competitions)
+                                {
+                                    <option value="@competition.Id">@competition.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="event-type-id">Event Type</label>
+                            <select class="form-select" id="event-type-id">
+                                @foreach (var eventType in Model.EventTypes)
+                                {
+                                    <option value="@eventType.Id">@eventType.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-12">
                             <label class="form-label" for="event-name">Name</label>
                             <input class="form-control" id="event-name" type="text" placeholder="Name" />
                         </div>

@@ -64,6 +64,8 @@ public class EventService : IEventService
             evt.Name = request.Name;
             evt.Description = request.Description;
             evt.StartDate = DateTime.Parse(request.StartDate + " " + request.StartTime);
+            evt.CompetitionId= request.CompetitionId;
+            evt.EventTypeId = request.EventTypeId;
 
             _dbContext.Events.Update(evt);
             _dbContext.SaveChanges();
@@ -76,7 +78,9 @@ public class EventService : IEventService
                 CreatedBy = "skate.mccartney@hotmail.com",
                 Name = request.Name,
                 Description = request.Description,
-                StartDate = DateTime.Parse(request.StartDate + " " + request.StartTime)
+                StartDate = DateTime.Parse(request.StartDate + " " + request.StartTime),
+                CompetitionId = request.CompetitionId,
+                EventTypeId = request.EventTypeId
             };
 
             _dbContext.Events.Add(evt);

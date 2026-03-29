@@ -11,6 +11,8 @@ public class EventMapper : BaseMapper<EventEntity, EventModel>
         model.Description = entity.Description;
         model.StartDate = entity.StartDate;
         model.FinishDate = entity.FinishDate;
+        model.CompetitionId = entity.CompetitionId;
+        model.EventTypeId = entity.EventTypeId;
     }
 
     protected override void MapModelToEntity(EventModel model, EventEntity entity)
@@ -19,5 +21,7 @@ public class EventMapper : BaseMapper<EventEntity, EventModel>
         entity.Description = model.Description;
         entity.StartDate = model.StartDate;
         entity.FinishDate = model.FinishDate;
+        entity.CompetitionId = model.CompetitionId;
+        entity.EventTypeId = model.EventTypeId;
     }
 }
