@@ -1,0 +1,77 @@
+﻿@page
+@model TeamPageModel
+
+<div class="container-fluid default-dashboard">
+    <div class="row widget-grid">
+        <div class="col-xl-12 proorder-xl-12 box-col-12 proorder-md-5">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Teams <button class="btn btn-sm btn-success pull-right team-btn" type="button" data-bs-toggle="modal" data-bs-target="#modal-team" data-id="00000000-0000-0000-0000-000000000000">Add Team</button></h4><span>List of all teams, use the buttons to add new teams or edit existing teams</span>
+                    </div>
+                    <div class="table-responsive theme-scrollbar">
+                        <table class="table">
+                            <thead>
+                                <tr class="border-bottom-primary">
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var team in Model.Teams)
+                                {
+                                    <tr role="row" class="odd">
+                                        <td>@team.Name</td>
+                                        <td>@team.Description</td>
+                                        <td><button class="btn btn-sm btn-primary team-btn" type="button" data-bs-toggle="modal" data-bs-target="#modal-team" data-id="@team.Id">Edit</button></td>
+                                        <td><button class="btn btn-sm btn-danger team-delete-btn" type="button" data-id="@team.Id">Delete</button></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-team" tabindex="-1" role="dialog" aria-labelledby="modal-team" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content dark-sign-up overflow-hidden">
+            <div class="modal-body social-profile text-start">
+                <div class="modal-toggle-wrapper">
+                    <h4 class="text-dark">Team</h4>
+                    <p>
+                        Fill in your information below to continue.
+                    </p>
+                    <form class="row g-3">
+                        <div class="col-md-12">
+                            <label class="form-label" for="team-name">Name</label>
+                            <input class="form-control" id="team-name" type="text" placeholder="Name" />
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="team-description">Description</label>
+                            <input class="form-control" id="team-description" type="text" placeholder="Description" />
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="button" id="team-submit-btn">Submit</button>
+                            <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="team-id" value="00000000-0000-0000-0000-000000000000" />
+<input type="hidden" id="organization-id" value="@Model.OrganizationId" />
+
+@section Scripts {
+    <script src="~/assets/js/sweet-alert/sweetalert.min.js"></script>
+    <script src="~/js/team.js?t=@DateTime.Now"></script>
+}
+

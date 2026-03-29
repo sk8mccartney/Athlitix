@@ -1,28 +1,22 @@
-﻿$('.event-btn').on('click', function () {
+﻿$('.team-btn').on('click', function () {
     var id = $(this).data('id');
-    $('#event-id').val(id);
+    $('#team-id').val(id);
 
     if (id === '00000000-0000-0000-0000-000000000000') {
-        $('#event-name').val('');
-        $('#event-description').val('');
-        $('#event-start-date').val(new Date().toISOString().substring(0, 10));
-        $('#event-start-time').val('20:00');
+        $('#team-name').val('');
+        $('#team-description').val('');
     } else {
-        $.getJSON('/api/event/' + id, function (json) {
-            $('#event-competition-id').val(json.competitionId.toString());
-            $('#event-type-id').val(json.eventTypeId.toString());
-            $('#event-name').val(json.name);
-            $('#event-description').val(json.description);
-            $('#event-start-date').val(json.startDate.substring(0, 10));
-            $('#event-start-time').val(json.startDate.substring(11, 16));
+        $.getJSON('/api/team/' + id, function (json) {
+            $('#team-name').val(json.name);
+            $('#team-description').val(json.description);
         });
     }
 });
 
-$('#event-submit-btn').on('click', function () {
-    var id = $('#event-id').val();
-    var name = $('#event-name').val();
-    var description = $('#event-description').val();
+$('#team-submit-btn').on('click', function () {
+    var id = $('#team-id').val();
+    var name = $('#team-name').val();
+    var description = $('#team-description').val();
 
     if (!name || !description) {
         Swal.fire({
@@ -36,26 +30,22 @@ $('#event-submit-btn').on('click', function () {
 
     var request = {
         id: id,
-        competitionId: $('#event-competition-id').val(),
-        eventTypeId: $('#event-type-id').val(),
-        name: $('#event-name').val(),
-        description: $('#event-description').val(),
-        startDate: $('#event-start-date').val(),
-        startTime: $('#event-start-time').val(),
+        name: $('#team-name').val(),
+        description: $('#team-description').val(),
         organizationId: $('#organization-id').val()
     };
 
     $.ajax({
-        url: '/api/event/save',
+        url: '/api/team/save',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(request),
         success: function (response) {
-            $('#modal-event').modal('hide');
+            $('#modal-team').modal('hide');
 
             Swal.fire({
                 icon: 'success',
-                title: 'Your event has been saved',
+                title: 'Your team has been saved',
                 showConfirmButton: false,
                 timer: 1500,
             });
@@ -63,18 +53,18 @@ $('#event-submit-btn').on('click', function () {
             setTimeout(() => location.reload(), 1500);
         },
         error: function (err) {
-            $('#modal-event').modal('hide');
+            $('#modal-team').modal('hide');
 
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Something went wrong! Your event has not been saved, try again.',
+                text: 'Something went wrong! Your team has not been saved, try again.',
             });
         }
     });
 });
 
-$('.event-delete-btn').on('click', function () {
+$('.team-delete-btn').on('click', function () {
     var id = $(this).data('id');
 
     Swal.fire({
@@ -86,7 +76,7 @@ $('.event-delete-btn').on('click', function () {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: '/api/event/' + id,
+                url: '/api/team/' + id,
                 type: 'DELETE',
                 success: function () {
                     Swal.fire({
@@ -102,7 +92,7 @@ $('.event-delete-btn').on('click', function () {
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'Something went wrong! We could not delete this event, try again.',
+                        text: 'Something went wrong! We could not delete this team, try again.',
                     });
                 }
             });
@@ -110,10 +100,3 @@ $('.event-delete-btn').on('click', function () {
     });
 });
 
-$('#filter-competition-id').on('change', function () {
-    var id = $(this).val();
-
-    if (!id) return;
-
-    window.location.href = "/events?competitionId=" + encodeURIComponent(id);
-});

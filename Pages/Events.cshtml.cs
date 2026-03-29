@@ -14,7 +14,7 @@ public class EventsPageModel(ILogger<EventsPageModel> logger, IOrganizationServi
     public required IEnumerable<EventTypeModel> EventTypes { get; set; }
     public required IEnumerable<CompetitionModel> Competitions { get; set; }
 
-    public void OnGet()
+    public void OnGet(Guid? competitionId)
     {
         _logger.LogInformation("Loading event page");
 
@@ -22,6 +22,11 @@ public class EventsPageModel(ILogger<EventsPageModel> logger, IOrganizationServi
         BreadCrumbName = "event";
 
         Events = _eventService.Get(OrganizationId);
+        if(competitionId is not null)
+        {
+            Events = Events.Where(x => x.CompetitionId == competitionId);
+        }
+
         EventTypes = _eventTypeService.Get(OrganizationId);
         Competitions = _competitionService.Get(OrganizationId);
     }

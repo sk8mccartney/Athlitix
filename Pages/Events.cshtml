@@ -9,10 +9,24 @@
                     <div class="card-header">
                         <h4>Events <button class="btn btn-sm btn-success pull-right event-btn" type="button" data-bs-toggle="modal" data-bs-target="#modal-event" data-id="00000000-0000-0000-0000-000000000000">Add Event</button></h4><span>List of all events, use the buttons to add new events or edit existing events</span>
                     </div>
+                    <div id="row">
+                        <div class="col-md-12">
+                            <label>Competition
+                                <select class="form-select" id="filter-competition-id">
+                                    <option value="">All</option>
+                                    @foreach (var competition in Model.Competitions)
+                                    {
+                                        <option value="@competition.Id">@competition.Name</option>
+                                    }
+                                </select>
+                            </label>
+                        </div>
+                    </div>
                     <div class="table-responsive theme-scrollbar">
                         <table class="table">
                             <thead>
                                 <tr class="border-bottom-primary">
+                                    <th scope="col">Competitiom</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Start</th>
@@ -25,6 +39,7 @@
                                 @foreach (var evt in Model.Events)
                                 {
                                     <tr role="row" class="odd">
+                                        <td>@evt.Competition.Name</td>
                                         <td>@evt.Name</td>
                                         <td>@evt.Description</td>
                                         <td>@evt.StartDate.ToString("dd MMM yyyy")</td>
