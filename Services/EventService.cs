@@ -25,8 +25,6 @@ public class EventService : IEventService
 
     public EventModel GetSingle(Guid id)
     {
-        var list = new List<EventModel>();
-
         _logger.LogInformation("Getting event with id:{id}.", id);
 
         var evt = _dbContext.Events.Single(e => e.Id == id);

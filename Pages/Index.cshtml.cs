@@ -12,11 +12,11 @@ public class IndexModel(ILogger<IndexModel> logger, IOrganizationService organiz
     private readonly ICompetitionService _competitionService = competitionService;
     private readonly IParticipantService _participantService = participantService;
 
-    public required IEnumerable<EventTypeModel> EventTypes { get; set; }
-    public required IEnumerable<TeamModel> Teams { get; set; }
-    public required IEnumerable<EventModel> Events { get; set; }
-    public required IEnumerable<CompetitionModel> Competitions { get; set; }
-    public required IEnumerable<ParticipantModel> Participants { get; set; }
+    public IEnumerable<EventTypeModel> EventTypes { get; set; }
+    public IEnumerable<TeamModel> Teams { get; set; }
+    public IEnumerable<EventModel> Events { get; set; }
+    public IEnumerable<CompetitionModel> Competitions { get; set; }
+    public IEnumerable<ParticipantModel> Participants { get; set; }
 
     public void OnGet()
     {

@@ -1,0 +1,139 @@
+﻿@page
+@model ParticipantPageModel
+
+<div class="container-fluid default-dashboard">
+    <div class="row widget-grid">
+        <div class="col-xl-12 proorder-xl-12 box-col-12 proorder-md-5">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Figters <button class="btn btn-sm btn-success pull-right participant-btn" type="button" data-bs-toggle="modal" data-bs-target="#modal-participant" data-id="00000000-0000-0000-0000-000000000000">Add Fighter</button></h4><span>List of all Fighters, use the buttons to add new fighters or edit existing fighters</span>
+                    </div>
+                    <div id="row">
+                        <div class="col-md-12">
+                            <label>Team
+                                <select class="form-select" id="filter-team-id">
+                                    <option value="">All</option>
+                                    @foreach (var team in Model.Teams)
+                                    {
+                                        <option value="@team.Id">@team.Name</option>
+                                    }
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="table-responsive theme-scrollbar">
+                        <table class="table">
+                            <thead>
+                                <tr class="border-bottom-primary">
+                                    <th scope="col">Team</th>
+                                    <th scope="col">Full Name</th>
+                                    <th scope="col">Nick Name</th>
+                                    <th scope="col">Age</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var participant in Model.Participants)
+                                {
+                                    <tr role="row" class="odd">
+                                        <td>@participant.Team.Name</td>
+                                        <td>@participant.FullName</td>
+                                        <td>@participant.NickName</td>
+                                        <td>@participant.Age</td>
+                                        <td><button class="btn btn-sm btn-primary participant-btn" type="button" data-bs-toggle="modal" data-bs-target="#modal-participant" data-id="@participant.Id">Edit</button></td>
+                                        <td><button class="btn btn-sm btn-danger participant-delete-btn" type="button" data-id="@participant.Id">Delete</button></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-participant" tabindex="-1" role="dialog" aria-labelledby="modal-participant" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content dark-sign-up overflow-hidden">
+            <div class="modal-body social-profile text-start">
+                <div class="modal-toggle-wrapper">
+                    <h4 class="text-dark">Event</h4>
+                    <p>
+                        Fill in your information below to continue.
+                    </p>
+                    <form class="row g-3">
+                        <div class="col-md-12">
+                            <label class="form-label" for="participant-team-id">Team</label>
+                            <select class="form-select" id="participant-team-id">
+                                @foreach (var team in Model.Teams)
+                                {
+                                    <option value="@team.Id">@team.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="participant-first-name">First Name</label>
+                            <input class="form-control" id="participant-first-name" type="text" placeholder="First Name" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="participant-last-name">Last Name</label>
+                            <input class="form-control" id="participant-last-name" type="text" placeholder="Last Name" />
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="participant-nick-name">Nick Name</label>
+                            <input class="form-control" id="participant-nick-name" type="text" placeholder="Nick Name" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="participant-email">Email</label>
+                            <input class="form-control" id="participant-email" type="email" placeholder="Email" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="participant-phone-number">Phone Number</label>
+                            <input class="form-control" id="participant-phone-number" type="number" placeholder="Phone Number" />
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="participant-date-of-birth">Date of birth</label>
+                            <input class="form-control digits" id="participant-date-of-birth" type="date" value="2016-01-01" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="participant-weight-kg">Weight</label>
+                            <div class="input-group">
+                                <input class="form-control" id="participant-weight-kg" type="number" placeholder="0.0"><span class="input-group-text" id="basic-addon2">kg</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="participant-height-cm">Height</label>
+                            <div class="input-group">
+                                <input class="form-control" id="participant-height-cm" type="number" placeholder="0.0"><span class="input-group-text" id="basic-addon2">cm</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="participant-record">Record</label>
+                            <input class="form-control" id="participant-record" type="text" placeholder="0-0-0" />
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="participant-notes">Notes</label>
+                            <textarea class="form-control" id="participant-notes" placeholder="Notes"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="button" id="participant-submit-btn">Submit</button>
+                            <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="participant-id" value="00000000-0000-0000-0000-000000000000" />
+<input type="hidden" id="organization-id" value="@Model.OrganizationId" />
+
+@section Scripts {
+    <script src="~/assets/js/sweet-alert/sweetalert.min.js"></script>
+    <script src="~/js/participant.js?t=@DateTime.Now"></script>
+}
+

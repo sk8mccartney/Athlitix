@@ -17,6 +17,8 @@ public class ParticipantModel : BaseModel
 
     public TeamModel Team { get; set; } = default!;
 
+    public string FullName => $"{FirstName} {LastName}";
+
     public int Age
     {
         get {
