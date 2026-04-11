@@ -10,7 +10,6 @@ public class EventMapper : BaseMapper<EventEntity, EventModel>
         model.Name = entity.Name;
         model.Description = entity.Description;
         model.StartDate = entity.StartDate;
-        model.FinishDate = entity.FinishDate;
         model.CompetitionId = entity.CompetitionId;
         model.EventTypeId = entity.EventTypeId;
     }
@@ -20,7 +19,6 @@ public class EventMapper : BaseMapper<EventEntity, EventModel>
         entity.Name = model.Name;
         entity.Description = model.Description;
         entity.StartDate = model.StartDate;
-        entity.FinishDate = model.FinishDate;
         entity.CompetitionId = model.CompetitionId;
         entity.EventTypeId = model.EventTypeId;
     }

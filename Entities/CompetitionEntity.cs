@@ -11,7 +11,7 @@ public class CompetitionEntity : BaseEntity
 
     public DateTimeOffset StartDate { get; set; }
 
-    public DateTimeOffset FinishDate { get; set; }
+    public Guid? TeamId { get; set; }
 
     // Foreign key
     public Guid OrganizationId { get; set; }

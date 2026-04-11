@@ -6,6 +6,7 @@ using Athlitix.Services;
 using Athlitix.Services.Interfaces;
 using Athlitix.Utilities.Mappers;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<SecuritySettings>(builder.Configuration.GetSection("Security"));
 
 // Optionally, if you are using Dependency Injection:
-builder.Services.AddDbContext<AthlitixContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<AthlitixContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")).ConfigureWarnings(w =>
+               w.Ignore(RelationalEventId.PendingModelChangesWarning)));
 
 builder.Services.AddScoped<IMapper<AdminEntity, AdminModel>, AdminMapper>();
 builder.Services.AddScoped<IMapper<CompetitionEntity, CompetitionModel>, CompetitionMapper>();

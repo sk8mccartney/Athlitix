@@ -12,7 +12,6 @@ public class EventEntity : BaseEntity
 
     public DateTimeOffset StartDate { get; set; }
 
-    public DateTimeOffset FinishDate { get; set; }
     public Guid EventTypeId { get; set; }
 
 

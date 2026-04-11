@@ -8,8 +8,6 @@ public class EventModel : BaseModel
 
     public DateTimeOffset StartDate { get; set; }
 
-    public DateTimeOffset FinishDate { get; set; }
-
     public Guid EventTypeId { get; set; }
 
     public Guid CompetitionId { get; set; }
