@@ -21,9 +21,11 @@ public class OrganizationService : IOrganizationService
 
     public OrganizationModel GetSingle(Guid id)
     {
+        // Get single organization entity from database
         _logger.LogInformation("Retrieving organization {organizationId}.", id);
         var organization = _dbContext.Organizations.Single(x => x.Id == id);
 
+        // Convert entity to model and return
         _logger.LogInformation("Retrived organization {name}.", organization.Name);
         return _mapper.ToModel(organization);
     }

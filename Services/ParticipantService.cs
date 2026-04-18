@@ -27,8 +27,10 @@ public class ParticipantService : IParticipantService
     {
         _logger.LogInformation("Getting participant with {id}.", id);
 
+        // Get single participant entity
         var participant = _dbContext.Participants.Single(e => e.Id == id);
 
+        // Convert to model and return
         return _participantMapper.ToModel(participant);
     }
 
@@ -38,14 +40,17 @@ public class ParticipantService : IParticipantService
 
         _logger.LogInformation("Getting participants for organization id:{organizationId}.", organizationId);
 
-        var participants = _dbContext.Participants.Include(e => e.Team).Where(e => e.Team.OrganizationId == organizationId);
+        // Get list of active participants from database that are active
+        var participants = _dbContext.Participants.Include(e => e.Team).Where(e => e.Team.OrganizationId == organizationId && e.IsActive);
         foreach (var participant in participants) {
+            // Convert to participant model
             var participantModel = _participantMapper.ToModel(participant);
             participantModel.Team = _teamMapper.ToModel(participant.Team);
 
             list.Add(participantModel);
         }
 
+        // Return list of participants
         return list;
     }
 
@@ -55,8 +60,10 @@ public class ParticipantService : IParticipantService
 
         ParticipantEntity participant;
 
+        // When participant already exists
         if (!request.Id.Equals(Guid.Empty))
         {
+            // Retrieve from database and update properties
             participant = _dbContext.Participants.First(x => x.Id.Equals(request.Id));
             participant.FirstName = request.FirstName;
             participant.LastName = request.LastName;
@@ -72,11 +79,13 @@ public class ParticipantService : IParticipantService
             participant.Notes = request.Notes;
             participant.TeamId = request.TeamId;
 
+            // Update participant and save to database
             _dbContext.Participants.Update(participant);
             _dbContext.SaveChanges();
         }
         else
         {
+            // When participant is new, create it
             participant = new ParticipantEntity
             {
                 Id = Guid.NewGuid(),
@@ -96,6 +105,7 @@ public class ParticipantService : IParticipantService
                 TeamId = request.TeamId
             };
 
+            // Add and save to database
             _dbContext.Participants.Add(participant);
             _dbContext.SaveChanges();
         }
@@ -105,13 +115,18 @@ public class ParticipantService : IParticipantService
     {
         _logger.LogInformation("Delete participant Id: {id}.", id);
 
+        // Retrieve participant from database
         var participant = _dbContext.Participants.FirstOrDefault(c => c.Id == id);
         if (participant == null)
         {
             throw new Exception($"Can not find competion with id {id}");
         }
 
-        _dbContext.Participants.Remove(participant);
+        // Enable soft delete flag
+        participant.IsActive = false;
+
+        // Update and save to database
+        _dbContext.Participants.Update(participant);
         _dbContext.SaveChanges();
     }
 }

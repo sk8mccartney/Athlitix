@@ -25,11 +25,14 @@ public class EventTypeService : IEventTypeService
 
         _logger.LogInformation("Getting events for organization id:{organizationId}.", organizationId);
 
-        var eventTypes = _dbContext.EventTypes.Where(e => e.OrganizationId == organizationId);
+        // Get list of event types that are active
+        var eventTypes = _dbContext.EventTypes.Where(e => e.OrganizationId == organizationId && e.IsActive);
         foreach (var eventType in eventTypes) {
+            // Convert entities to models
             list.Add(_mapper.ToModel(eventType));
         }
 
+        // Return list of event types
         return list;
     }
 }

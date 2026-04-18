@@ -32,23 +32,28 @@ public class AdminService : IAdminService
 
         _logger.LogInformation("Create admin {admin}.", $"{adminModel.FirstName} {adminModel.LastName}");
 
+        // Create new admin entity
         var admin = _dbContext.Admins.Add(_mapper.ToEntity(adminModel));
         _dbContext.SaveChanges();
 
+        // Convert admin entity to model and return it
         return _mapper.ToModel(admin.Entity);
     }
 
     public AdminModel GetSingle(Guid id)
     {
+        // Get a single admin entity
         _logger.LogInformation("Retrieving admin {adminId}.", id);
         var admin = _dbContext.Admins.Single(x => x.Id == id);
 
+        // Return the admin entity converted to a model
         _logger.LogInformation("Retrived admin {name}.", $"{admin.FirstName} {admin.LastName}");
         return _mapper.ToModel(admin);
     }
 
     public AdminModel? Login(string email, string password)
     {
+        // Validate input parameters
         if (string.IsNullOrEmpty(email))
         {
             throw new ArgumentNullException(nameof(email));
@@ -61,9 +66,11 @@ public class AdminService : IAdminService
 
         try
         {
+            // Get an admin entity with correct password which is active
             _logger.LogInformation("Login request for {email}.", email);
-            var admin = _dbContext.Admins.Single(x => x.Email.Equals(email) && x.PasswordHash.Equals(Utility.PasswordHasher.HashPassword(password, _salt)));
+            var admin = _dbContext.Admins.Single(x => x.Email.Equals(email) && x.PasswordHash.Equals(Utility.PasswordHasher.HashPassword(password, _salt)) && x.IsActive);
 
+            // Convert to an admin model and return
             _logger.LogInformation("Login successful for {email}.", admin.Email);
             return _mapper.ToModel(admin);
         }

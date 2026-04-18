@@ -26,8 +26,10 @@ public class TeamService : ITeamService
 
         _logger.LogInformation("Getting team with id:{id}.", id);
 
+        // Use single to get the team
         var team = _dbContext.Teams.Single(e => e.Id == id);
 
+        // Return single team model
         return _mapper.ToModel(team);
     }
 
@@ -37,14 +39,17 @@ public class TeamService : ITeamService
 
         _logger.LogInformation("Getting teams for organization id:{organizationId}.", organizationId);
 
-        var teams = _dbContext.Teams.Include(x => x.Participants).Where(e => e.OrganizationId == organizationId);
+        // Get all teams from database for organization that are active
+        var teams = _dbContext.Teams.Include(x => x.Participants).Where(e => e.OrganizationId == organizationId && e.IsActive);
         foreach (var team in teams) {
+            // Convert team entity to a model
             var teamModel = _mapper.ToModel(team);
             teamModel.ParticipantCount = team.Participants.Where(x => x.IsActive).Count();
 
             list.Add(teamModel);
         }
 
+        // Return list of team models
         return list;
     }
 
@@ -54,17 +59,20 @@ public class TeamService : ITeamService
 
         TeamEntity team;
 
+        // When entity already exists get entity
         if (!request.Id.Equals(Guid.Empty))
         {
             team = _dbContext.Teams.First(x => x.Id.Equals(request.Id));
             team.Name = request.Name;
             team.Description = request.Description;
 
+            // Update & save changes on database
             _dbContext.Teams.Update(team);
             _dbContext.SaveChanges();
         }
         else
         {
+            // When entity does not exist, create a new one
             team = new TeamEntity
             {
                 Id = Guid.NewGuid(),
@@ -74,6 +82,7 @@ public class TeamService : ITeamService
                 OrganizationId = request.OrganizationId
             };
 
+            // Add & save changes on database
             _dbContext.Teams.Add(team);
             _dbContext.SaveChanges();
         }
@@ -81,6 +90,7 @@ public class TeamService : ITeamService
 
     public void Delete(Guid id)
     {
+        // Soft delete of a team
         _logger.LogInformation("Delete team Id: {id}.", id);
 
         var team = _dbContext.Teams.FirstOrDefault(c => c.Id == id);
@@ -89,7 +99,11 @@ public class TeamService : ITeamService
             throw new Exception($"Can not find competion with id {id}");
         }
 
-        _dbContext.Teams.Remove(team);
+        // Set active flag
+        team.IsActive = false;
+
+        // Update & save changes on database
+        _dbContext.Teams.Update(team);
         _dbContext.SaveChanges();
     }
 }

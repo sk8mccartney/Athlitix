@@ -26,8 +26,10 @@ public class CompetitionService : ICompetitionService
 
         _logger.LogInformation("Getting competition with id:{id}.", id);
 
+        // Get a single competition entity
         var competition = _dbContext.Competitions.Single(e => e.Id == id);
 
+        // Return competition model
         return _mapper.ToModel(competition);
     }
 
@@ -37,15 +39,21 @@ public class CompetitionService : ICompetitionService
 
         _logger.LogInformation("Getting competitions for organization id:{organizationId}.", organizationId);
 
-        var competitions = _dbContext.Competitions.Where(e => e.OrganizationId == organizationId).OrderBy(e => e.StartDate);
+        // Get list of competition entites
+        var competitions = _dbContext.Competitions.Where(e => e.OrganizationId == organizationId && e.IsActive).OrderBy(e => e.StartDate);
         foreach (var competition in competitions)
         {
+            // Convert competitions to models
             var competitionModel = _mapper.ToModel(competition);
+
+            // Count the number of associated events
             competitionModel.EventCount = competition.Events.Count();
 
+            // Add to list
             list.Add(competitionModel);
         }
 
+        // Return list of competition models
         return list;
     }
 
@@ -55,24 +63,29 @@ public class CompetitionService : ICompetitionService
 
         CompetitionEntity competition;
 
+        // Get guid from the request
         var teamId = Guid.Empty;
         if (!request.TeamId.Equals(string.Empty)) {
             Guid.TryParse(request.TeamId, out teamId);
         }
 
+        // When guid exists
         if (!request.Id.Equals(Guid.Empty))
         {
+            // Get competition entity and change properties
             competition = _dbContext.Competitions.First(x => x.Id.Equals(request.Id));
             competition.Name = request.Name;
             competition.Description = request.Description;
             competition.StartDate = DateTime.Parse(request.StartDate + " " + request.StartTime);
             competition.TeamId = teamId.Equals(Guid.Empty) ? null : teamId;
 
+            // Update and save to database
             _dbContext.Competitions.Update(competition);
             _dbContext.SaveChanges();
         }
         else
         {
+            // When a new competition, create entity
             competition = new CompetitionEntity
             {
                 Id = Guid.NewGuid(),
@@ -84,6 +97,7 @@ public class CompetitionService : ICompetitionService
                 OrganizationId = request.OrganizationId
             };
 
+            // Add and save to database
             _dbContext.Competitions.Add(competition);
             _dbContext.SaveChanges();
         }
@@ -93,13 +107,18 @@ public class CompetitionService : ICompetitionService
     {
         _logger.LogInformation("Delete competition Id: {id}.", id);
 
+        // Retreive competition entity from database
         var competition = _dbContext.Competitions.FirstOrDefault(c => c.Id == id);
         if (competition == null)
         {
             throw new Exception($"Can not find competion with id {id}");
         }
 
-        _dbContext.Competitions.Remove(competition);
+        // Set soft delete flag
+        competition.IsActive = false;
+
+        // Update and save competition to database
+        _dbContext.Competitions.Update(competition);
         _dbContext.SaveChanges();
     }
 }

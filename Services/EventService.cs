@@ -27,8 +27,10 @@ public class EventService : IEventService
     {
         _logger.LogInformation("Getting event with id:{id}.", id);
 
+        // Get single event entity from database
         var evt = _dbContext.Events.Single(e => e.Id == id);
 
+        // Convert to event model and return
         return _mapper.ToModel(evt);
     }
 
@@ -38,15 +40,18 @@ public class EventService : IEventService
 
         _logger.LogInformation("Getting events for organization id:{organizationId}.", organizationId);
 
-        var events = _dbContext.Events.Include(e => e.Competition).Where(e => e.Competition.OrganizationId == organizationId).OrderBy(e => e.StartDate);
+        // Get list of event entities
+        var events = _dbContext.Events.Include(e => e.Competition).Where(e => e.Competition.OrganizationId == organizationId && e.IsActive).OrderBy(e => e.StartDate);
         foreach (var evt in events)
         {
+            // Convert to event models
             var eventModel = _mapper.ToModel(evt);
             eventModel.Competition = _competitionMapper.ToModel(evt.Competition);
 
             list.Add(eventModel);
         }
 
+        // Return the list of event models
         return list;
     }
 
@@ -56,8 +61,10 @@ public class EventService : IEventService
 
         EventEntity evt;
 
+        // When the event exists
         if (!request.Id.Equals(Guid.Empty))
         {
+            // Retreive from database and update properties
             evt = _dbContext.Events.First(x => x.Id.Equals(request.Id));
             evt.Name = request.Name;
             evt.Description = request.Description;
@@ -65,11 +72,13 @@ public class EventService : IEventService
             evt.CompetitionId= request.CompetitionId;
             evt.EventTypeId = request.EventTypeId;
 
+            // Update entity and save to database
             _dbContext.Events.Update(evt);
             _dbContext.SaveChanges();
         }
         else
         {
+            // When event is new create entity
             evt = new EventEntity
             {
                 Id = Guid.NewGuid(),
@@ -81,6 +90,7 @@ public class EventService : IEventService
                 EventTypeId = request.EventTypeId
             };
 
+            // Add and save to database
             _dbContext.Events.Add(evt);
             _dbContext.SaveChanges();
         }
@@ -90,13 +100,18 @@ public class EventService : IEventService
     {
         _logger.LogInformation("Delete event Id: {id}.", id);
 
+        // Get the event from the database
         var evt = _dbContext.Events.FirstOrDefault(c => c.Id == id);
         if (evt == null)
         {
             throw new Exception($"Can not find competion with id {id}");
         }
 
-        _dbContext.Events.Remove(evt);
+        // Set soft delete flag
+        evt.IsActive = false;
+
+        // Update and save to database
+        _dbContext.Events.Update(evt);
         _dbContext.SaveChanges();
     }
 }
