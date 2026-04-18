@@ -68,6 +68,18 @@
                             <label class="form-label" for="competition-start-time">Time</label>
                             <input class="form-control digits" id="competition-start-time" type="time" value="20:00:00" />
                         </div>
+                        <div class="col-md-12">
+                            <label>
+                                Host Team
+                                <select class="from-control form-select" id="competition-team-id">
+                                    <option value="">None</option>
+                                    @foreach (var team in Model.Teams)
+                                    {
+                                        <option value="@team.Id">@team.Name</option>
+                                    }
+                                </select>
+                            </label>
+                        </div>
                         <div class="col-12">
                             <button class="btn btn-primary" type="button" id="competition-submit-btn">Submit</button>
                             <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancel</button>

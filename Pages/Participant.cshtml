@@ -82,9 +82,15 @@
                             <label class="form-label" for="participant-last-name">Last Name</label>
                             <input class="form-control" id="participant-last-name" type="text" placeholder="Last Name" />
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label class="form-label" for="participant-nick-name">Nick Name</label>
                             <input class="form-control" id="participant-nick-name" type="text" placeholder="Nick Name" />
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" id="participant-has-medical-clearance" type="checkbox" role="switch" required="" />
+                                <label class="form-check-label" for="participant-has-medical-clearance">Has Medical Clearance</label>
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="participant-email">Email</label>
@@ -94,9 +100,16 @@
                             <label class="form-label" for="participant-phone-number">Phone Number</label>
                             <input class="form-control" id="participant-phone-number" type="number" placeholder="Phone Number" />
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label class="form-label" for="participant-date-of-birth">Date of birth</label>
                             <input class="form-control digits" id="participant-date-of-birth" type="date" value="2016-01-01" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="participant-gender">Gender</label>
+                            <select class="form-select" id="participant-gender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="participant-weight-kg">Weight</label>

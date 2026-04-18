@@ -9,6 +9,8 @@
         $('#participant-email').val('');
         $('#participant-phone-number').val('');
         $('#participant-date-of-birth').val(new Date().toISOString().substring(0, 10));
+        $('#participant-gender').val('Male');
+        $('#participant-has-medical-clearance').prop("checked", true);
         $('#participant-weight-kg').val('');
         $('#participant-height-cm').val('');
         $('#participant-record').val('');
@@ -22,6 +24,8 @@
             $('#participant-email').val(json.email);
             $('#participant-phone-number').val(json.phoneNumber);
             $('#participant-date-of-birth').val(json.dateOfBirth.substring(0, 10));
+            $('#participant-gender').val(json.gender);
+            $('#participant-has-medical-clearance').prop("checked", json.hasMedicalClearance);
             $('#participant-weight-kg').val(json.weightKg);
             $('#participant-height-cm').val(json.heightCm);
             $('#participant-record').val(json.record);
@@ -67,6 +71,8 @@ $('#participant-submit-btn').on('click', function () {
         email: $('#participant-email').val(),
         phoneNumber: $('#participant-phone-number').val(),
         dateOfBirth: $('#participant-date-of-birth').val(),
+        gender: $('#participant-gender').val(),
+        hasMedicalClearance: $('#participant-has-medical-clearance').prop("checked"),
         weightKg: $('#participant-weight-kg').val(),
         heightCm: $('#participant-height-cm').val(),
         record: $('#participant-record').val(),
@@ -74,12 +80,14 @@ $('#participant-submit-btn').on('click', function () {
         organizationId: $('#organization-id').val()
     };
 
+    console.log('Request: ', request);
+
     $.ajax({
         url: '/api/participant/save',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(request),
-        success: function (response) {
+        success: function () {
             $('#modal-participant').modal('hide');
 
             Swal.fire({

@@ -7,12 +7,14 @@
         $('#competition-description').val('');
         $('#competition-start-date').val(new Date().toISOString().substring(0, 10));
         $('#competition-start-time').val('20:00');
+        $('#competition-team-id').val('');
     } else {
         $.getJSON('/api/competition/' + id, function (json) {
             $('#competition-name').val(json.name);
             $('#competition-description').val(json.description);
             $('#competition-start-date').val(json.startDate.substring(0, 10));
             $('#competition-start-time').val(json.startDate.substring(11, 16));
+            $('#competition-team-id').val(json.teamId);
         });
     }
 });
@@ -38,6 +40,7 @@ $('#competition-submit-btn').on('click', function () {
         description: $('#competition-description').val(),
         startDate: $('#competition-start-date').val(),
         startTime: $('#competition-start-time').val(),
+        teamId: $('#competition-team-id').val(),
         organizationId: $('#organization-id').val()
     };
 

@@ -8,5 +8,7 @@ public class CompetitionModel : BaseModel
 
     public DateTimeOffset StartDate { get; set; }
 
+    public Guid? TeamId { get; set; }
+
     public int EventCount { get; set; }
 }

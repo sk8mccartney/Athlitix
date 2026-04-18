@@ -55,12 +55,18 @@ public class CompetitionService : ICompetitionService
 
         CompetitionEntity competition;
 
+        var teamId = Guid.Empty;
+        if (!request.TeamId.Equals(string.Empty)) {
+            Guid.TryParse(request.TeamId, out teamId);
+        }
+
         if (!request.Id.Equals(Guid.Empty))
         {
             competition = _dbContext.Competitions.First(x => x.Id.Equals(request.Id));
             competition.Name = request.Name;
             competition.Description = request.Description;
             competition.StartDate = DateTime.Parse(request.StartDate + " " + request.StartTime);
+            competition.TeamId = teamId.Equals(Guid.Empty) ? null : teamId;
 
             _dbContext.Competitions.Update(competition);
             _dbContext.SaveChanges();
@@ -74,6 +80,7 @@ public class CompetitionService : ICompetitionService
                 Name = request.Name,
                 Description = request.Description,
                 StartDate = DateTime.Parse(request.StartDate + " " + request.StartTime),
+                TeamId = teamId.Equals(Guid.Empty) ? null : teamId,
                 OrganizationId = request.OrganizationId
             };
 

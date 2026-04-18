@@ -10,6 +10,7 @@ public class CompetitionMapper : BaseMapper<CompetitionEntity, CompetitionModel>
         model.Name = entity.Name;
         model.Description = entity.Description;
         model.StartDate = entity.StartDate;
+        model.TeamId = entity.TeamId;
     }
 
     protected override void MapModelToEntity(CompetitionModel model, CompetitionEntity entity)
@@ -17,5 +18,6 @@ public class CompetitionMapper : BaseMapper<CompetitionEntity, CompetitionModel>
         entity.Name = model.Name;
         entity.Description = model.Description;
         entity.StartDate = model.StartDate;
+        entity.TeamId = model.TeamId;
     }
 }

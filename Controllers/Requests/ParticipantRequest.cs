@@ -9,6 +9,8 @@ public class ParticipantRequest
     public string Email { get; set; } = string.Empty;
     public string PhoneNumber { get; set; } = string.Empty;
     public string DateOfBirth { get; set; } = string.Empty;
+    public string Gender {  get; set; } = string.Empty;
+    public bool HasMedicalClearance { get; set; }
     public decimal WeightKg { get; set; }
     public decimal HeightCm { get; set; }
     public string Record { get; set; } = string.Empty;

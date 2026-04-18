@@ -7,5 +7,6 @@ public class CompetitionRequest
     public string Description { get; set; } = string.Empty;
     public string StartDate { get; set; } = string.Empty;
     public string StartTime { get; set; } = string.Empty;
+    public string TeamId { get; set; } = string.Empty;
     public Guid OrganizationId { get; set; }
 }

@@ -18,6 +18,8 @@ public class ParticipantMapper : BaseMapper<ParticipantEntity, ParticipantModel>
         model.HeightCm = entity.HeightCm;
         model.WeightKg = entity.WeightKg;
         model.DateOfBirth = entity.DateOfBirth;
+        model.Gender = entity.Gender;
+        model.HasMedicalClearance = entity.HasMedicalClearance;
         model.Record = entity.Record;
         model.Notes = entity.Notes;
     }
@@ -34,6 +36,8 @@ public class ParticipantMapper : BaseMapper<ParticipantEntity, ParticipantModel>
         entity.HeightCm = model.HeightCm;
         entity.WeightKg = model.WeightKg;
         entity.DateOfBirth = model.DateOfBirth;
+        entity.Gender = model.Gender;
+        entity.HasMedicalClearance = model.HasMedicalClearance;
         entity.Record = model.Record;
         entity.Notes = model.Notes;
     }

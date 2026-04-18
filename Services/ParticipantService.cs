@@ -64,6 +64,8 @@ public class ParticipantService : IParticipantService
             participant.Email = request.Email;
             participant.PhoneNumber = request.PhoneNumber;
             participant.DateOfBirth = DateTime.Parse(request.DateOfBirth);
+            participant.Gender = request.Gender;
+            participant.HasMedicalClearance = request.HasMedicalClearance;
             participant.WeightKg = request.WeightKg;
             participant.HeightCm = request.HeightCm;
             participant.Record = request.Record;
@@ -85,6 +87,8 @@ public class ParticipantService : IParticipantService
                 Email = request.Email,
                 PhoneNumber = request.PhoneNumber,
                 DateOfBirth = DateTime.Parse(request.DateOfBirth),
+                Gender = request.Gender,
+                HasMedicalClearance = request.HasMedicalClearance,
                 WeightKg = request.WeightKg,
                 HeightCm = request.HeightCm,
                 Record = request.Record,
