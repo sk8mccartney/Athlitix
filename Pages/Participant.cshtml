@@ -10,16 +10,15 @@
                         <h4>Figters <button class="btn btn-sm btn-success pull-right participant-btn" type="button" data-bs-toggle="modal" data-bs-target="#modal-participant" data-id="00000000-0000-0000-0000-000000000000">Add Fighter</button></h4><span>List of all Fighters, use the buttons to add new fighters or edit existing fighters</span>
                     </div>
                     <div id="row">
-                        <div class="col-md-12">
-                            <label>Team
-                                <select class="form-select" id="filter-team-id">
-                                    <option value="">All</option>
-                                    @foreach (var team in Model.Teams)
-                                    {
-                                        <option value="@team.Id">@team.Name</option>
-                                    }
-                                </select>
-                            </label>
+                        <div class="card-body">
+                            <label>Filter by team</label>
+                            <select class="form-select" id="filter-team-id">
+                                <option value="">All</option>
+                                @foreach (var team in Model.Teams)
+                                {
+                                    <option value="@team.Id">@team.Name</option>
+                                }
+                            </select>
                         </div>
                     </div>
                     <div class="table-responsive theme-scrollbar">
@@ -88,6 +87,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-check form-switch">
+                                <>
                                 <input class="form-check-input" id="participant-has-medical-clearance" type="checkbox" role="switch" required="" />
                                 <label class="form-check-label" for="participant-has-medical-clearance">Has Medical Clearance</label>
                             </div>

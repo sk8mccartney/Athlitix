@@ -152,5 +152,5 @@ $('#filter-team-id').on('change', function () {
 
     if (!id) return;
 
-    window.location.href = "/participants?teamId=" + encodeURIComponent(id);
+    window.location.href = "/participant?teamId=" + encodeURIComponent(id);
 });
