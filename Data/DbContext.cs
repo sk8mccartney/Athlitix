@@ -136,8 +136,9 @@ public class AthlitixContext : DbContext
                 new EventEntity
                 {
                     Id = Guid.Parse("101a7f3c-9c2b-4f1a-9e3d-6c5a4b3d2e01"),
-                    Name = "Men's Under 60kg Open",
-                    Description = "Men's amateur lightweight division (Under 60kg).",
+                    Name = "Men's Under 60 kg Open",
+                    Description = "Men's amateur lightweight division (Under 60 kg).",
+                    WeightRange = "Under 60 kg",
                     StartDate = new DateTimeOffset(2026, 7, 7, 20, 0, 0, TimeSpan.Zero),
                     EventTypeId = _eventTypeId2,
                     CompetitionId = _competitionId1,
@@ -148,8 +149,9 @@ public class AthlitixContext : DbContext
                 new EventEntity
                 {
                     Id = Guid.Parse("202b8e4d-1a3c-4b2d-8f9e-7d6c5b4a3e02"),
-                    Name = "Men's Under 71kg Open",
-                    Description = "Men's amateur light-middleweight division (Under 71kg).",
+                    Name = "Men's Under 71 kg Open",
+                    Description = "Men's amateur light-middleweight division (Under 71 kg).",
+                    WeightRange = "Under 71 kg",
                     StartDate = new DateTimeOffset(2026, 7, 7, 20, 15, 0, TimeSpan.Zero),
                     EventTypeId = _eventTypeId3,
                     CompetitionId = _competitionId1,
@@ -160,8 +162,9 @@ public class AthlitixContext : DbContext
                 new EventEntity
                 {
                     Id = Guid.Parse("303c9d5e-2b4d-4c3e-9a8f-8e7d6c5b4a03"),
-                    Name = "Men's Under 54kg Open",
-                    Description = "Men's amateur bantamweight division (Under 54kg).",
+                    Name = "Men's Under 54 kg Open",
+                    Description = "Men's amateur bantamweight division (Under 54 kg).",
+                    WeightRange = "Under 54 kg",
                     StartDate = new DateTimeOffset(2026, 7, 7, 20, 30, 0, TimeSpan.Zero),
                     EventTypeId = _eventTypeId2,
                     CompetitionId = _competitionId1,
@@ -172,8 +175,9 @@ public class AthlitixContext : DbContext
                 new EventEntity
                 {
                     Id = Guid.Parse("404d0c6f-3c5e-4d4f-8b7a-9f8e7d6c5b04"),
-                    Name = "Men's Under 80kg Open",
-                    Description = "Men's amateur light-heavyweight division (Under 80kg).",
+                    Name = "Men's Under 80 kg Open",
+                    Description = "Men's amateur light-heavyweight division (Under 80 kg).",
+                    WeightRange = "Under 80 kg",
                     StartDate = new DateTimeOffset(2026, 7, 7, 20, 45, 0, TimeSpan.Zero),
                     EventTypeId = _eventTypeId3,
                     CompetitionId = _competitionId1,
@@ -184,8 +188,9 @@ public class AthlitixContext : DbContext
                 new EventEntity
                 {
                     Id = Guid.Parse("505e1b7a-4d6f-4e5a-9c8b-0a9f8e7d6c05"),
-                    Name = "Men's Under 63.5kg Open",
-                    Description = "Men's amateur light-welterweight division (Under 63.5kg).",
+                    Name = "Men's Under 63.5 kg Open",
+                    Description = "Men's amateur light-welterweight division (Under 63.5 kg).",
+                    WeightRange = "Under 63.5 kg",
                     StartDate = new DateTimeOffset(2026, 7, 7, 21, 0, 0, TimeSpan.Zero),
                     EventTypeId = _eventTypeId2,
                     CompetitionId = _competitionId1,
@@ -196,8 +201,9 @@ public class AthlitixContext : DbContext
                 new EventEntity
                 {
                     Id = Guid.Parse("606f2a8b-5e7a-4f6b-8d9c-1b0a9f8e7d06"),
-                    Name = "Men's Under 92kg Open",
-                    Description = "Men's amateur heavyweight division (Under 92kg).",
+                    Name = "Men's Under 92 kg Open",
+                    Description = "Men's amateur heavyweight division (Under 92 kg).",
+                    WeightRange = "Over 92 kg",
                     StartDate = new DateTimeOffset(2026, 7, 7, 21, 15, 0, TimeSpan.Zero),
                     EventTypeId = _eventTypeId3,
                     CompetitionId = _competitionId1,
@@ -208,8 +214,9 @@ public class AthlitixContext : DbContext
                 new EventEntity
                 {
                     Id = Guid.Parse("707a3b9c-6f8b-4a7c-9e0d-2c1b0a9f8e07"),
-                    Name = "Men's Under 57kg Open",
-                    Description = "Men's amateur featherweight division (Under 57kg).",
+                    Name = "Men's Under 57 kg Open",
+                    Description = "Men's amateur featherweight division (Under 57 kg).",
+                    WeightRange = "Under 57 kg",
                     StartDate = new DateTimeOffset(2026, 7, 7, 21, 30, 0, TimeSpan.Zero),
                     EventTypeId = _eventTypeId2,
                     CompetitionId = _competitionId1,
@@ -220,8 +227,9 @@ public class AthlitixContext : DbContext
                 new EventEntity
                 {
                     Id = Guid.Parse("808b4cad-7a9c-4b8d-8f1e-3d2c1b0a9f08"),
-                    Name = "Men's Over 92kg Open",
-                    Description = "Men's amateur super-heavyweight division (Over 92kg).",
+                    Name = "Men's Over 92 kg Open",
+                    Description = "Men's amateur super-heavyweight division (Over 92 kg).",
+                    WeightRange = "Over 92 kg",
                     StartDate = new DateTimeOffset(2026, 7, 7, 21, 45, 0, TimeSpan.Zero),
                     EventTypeId = _eventTypeId3,
                     CompetitionId = _competitionId1,

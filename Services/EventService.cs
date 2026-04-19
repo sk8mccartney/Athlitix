@@ -68,6 +68,7 @@ public class EventService : IEventService
             evt = _dbContext.Events.First(x => x.Id.Equals(request.Id));
             evt.Name = request.Name;
             evt.Description = request.Description;
+            evt.WeightRange = request.WeightRange;
             evt.StartDate = DateTime.Parse(request.StartDate + " " + request.StartTime);
             evt.CompetitionId= request.CompetitionId;
             evt.EventTypeId = request.EventTypeId;
@@ -85,6 +86,7 @@ public class EventService : IEventService
                 CreatedBy = "skate.mccartney@hotmail.com",
                 Name = request.Name,
                 Description = request.Description,
+                WeightRange = request.WeightRange,
                 StartDate = DateTime.Parse(request.StartDate + " " + request.StartTime),
                 CompetitionId = request.CompetitionId,
                 EventTypeId = request.EventTypeId

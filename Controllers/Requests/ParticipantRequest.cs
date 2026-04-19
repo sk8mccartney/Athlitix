@@ -1,5 +1,9 @@
 ﻿namespace Athlitix.Controllers.Requests;
 
+
+// Request that will be sent in json to the participant rest (API) endpoint
+// Uses native data types, which may be converted later.
+// Defaults set incase of ommission
 public class ParticipantRequest
 {
     public Guid Id { get; set; }

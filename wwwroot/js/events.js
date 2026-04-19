@@ -13,6 +13,7 @@
             $('#event-type-id').val(json.eventTypeId.toString());
             $('#event-name').val(json.name);
             $('#event-description').val(json.description);
+            $('#event-weight-range').val(json.weightRange);
             $('#event-start-date').val(json.startDate.substring(0, 10));
             $('#event-start-time').val(json.startDate.substring(11, 16));
         });
@@ -40,6 +41,7 @@ $('#event-submit-btn').on('click', function () {
         eventTypeId: $('#event-type-id').val(),
         name: $('#event-name').val(),
         description: $('#event-description').val(),
+        weightRange: $('#event-weight-range').val(),
         startDate: $('#event-start-date').val(),
         startTime: $('#event-start-time').val(),
         organizationId: $('#organization-id').val()

@@ -10,6 +10,8 @@ public class EventEntity : BaseEntity
 
     public string Description { get; set; } = default!;
 
+    public string WeightRange { get; set; } = default!;
+
     public DateTimeOffset StartDate { get; set; }
 
     public Guid EventTypeId { get; set; }

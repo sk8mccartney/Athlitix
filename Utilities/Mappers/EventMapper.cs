@@ -9,6 +9,7 @@ public class EventMapper : BaseMapper<EventEntity, EventModel>
     {
         model.Name = entity.Name;
         model.Description = entity.Description;
+        model.WeightRange = entity.WeightRange;
         model.StartDate = entity.StartDate;
         model.CompetitionId = entity.CompetitionId;
         model.EventTypeId = entity.EventTypeId;
@@ -18,6 +19,7 @@ public class EventMapper : BaseMapper<EventEntity, EventModel>
     {
         entity.Name = model.Name;
         entity.Description = model.Description;
+        entity.WeightRange = model.WeightRange;
         entity.StartDate = model.StartDate;
         entity.CompetitionId = model.CompetitionId;
         entity.EventTypeId = model.EventTypeId;

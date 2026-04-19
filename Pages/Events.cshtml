@@ -78,9 +78,9 @@
                         <div class="col-md-12">
                             <label class="form-label" for="event-type-id">Event Type</label>
                             <select class="form-select" id="event-type-id">
-                                @foreach (var eventType in Model.EventTypes)
+                                @foreach (var weightRange in Athlitix.Utilities.WeightRanges.All)
                                 {
-                                    <option value="@eventType.Id">@eventType.Name</option>
+                                    <option value="@weightRange.Label">@weightRange.Label</option>
                                 }
                             </select>
                         </div>
@@ -91,6 +91,15 @@
                         <div class="col-md-12">
                             <label class="form-label" for="event-description">Description</label>
                             <input class="form-control" id="event-description" type="text" placeholder="Description" />
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label" for="event-weight-range">Weight Range</label>
+                            <select class="form-select" id="event-weight-range">
+                                @foreach (var eventType in Model.EventTypes)
+                                {
+                                    <option value="@eventType.Id">@eventType.Name</option>
+                                }
+                            </select>
                         </div>
                         <div class="col-md-12">
                             <label class="form-label" for="event-start-date">Start</label>
